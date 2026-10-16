@@ -3,37 +3,81 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0c2a">
+  <meta name="theme-color" content="#0a0d2e">
   <title>Beyond DX: AI Transformation Forum</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --deep: #0a0d2e;
+      --indigo: #151a5e;
+    }
     html { scroll-behavior: smooth; }
-    body { margin: 0; background: #0b0c2a; }
-    .hero-bg { position:absolute; inset:-6%; z-index:-3; animation: drift 20s ease-in-out infinite alternate; background: radial-gradient(ellipse at 24% 25%,rgba(112,80,255,.66),transparent 38%),radial-gradient(ellipse at 80% 72%,rgba(47,116,255,.58),transparent 42%),radial-gradient(ellipse at 72% 10%,rgba(208,68,159,.34),transparent 32%),linear-gradient(135deg,#0a0d2e,#141a70 55%,#24157e); }
-    .hero-spot { position:absolute; inset:0; z-index:-2; pointer-events:none; mix-blend-mode:screen; background:radial-gradient(560px circle at var(--mx,50%) var(--my,50%),rgba(150,165,255,.38),transparent 65%); }
-    .hero-shine { position:absolute; inset:0; z-index:-2; pointer-events:none; overflow:hidden; }
-    .hero-shine:after { content:""; position:absolute; top:0; bottom:0; left:0; width:34%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent); transform:skewX(-18deg); animation:shine 9s ease-in-out infinite; }
-    .hero-shade { position:absolute; inset:0; z-index:-1; pointer-events:none; background:linear-gradient(90deg,rgba(10,13,46,.6),rgba(10,13,46,.2),transparent); }
-    @keyframes drift { to { transform:translate3d(2%,-2%,0) scale(1.08); } }
-    @keyframes shine { 0%,62% { transform:translateX(-130%) skewX(-18deg); } 100% { transform:translateX(360%) skewX(-18deg); } }
-    @keyframes rise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
-    .rise { animation:rise .9s cubic-bezier(.22,.8,.22,1) both; }
-    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation:none !important; } }
+    body { margin: 0; background: var(--deep); font-family: "Montserrat", system-ui, -apple-system, sans-serif; color: #fff; }
+
+    /* ---------- HERO ANIMATED SVG BACKGROUND & LIGHT STREAKS ---------- */
+    .hero { position: relative; isolation: isolate; display: flex; align-items: center; overflow: hidden; min-height: 100vh; background: var(--deep); }
+    .hero__bg { position: absolute; inset: -6%; z-index: -3; will-change: transform; transform: translate3d(calc(var(--mx,0)*-22px), calc(var(--my,0)*-14px + var(--sy,0)*.22px), 0); }
+    .hero__bg svg { width: 100%; height: 100%; display: block; }
+    .hero__bg [class^="hb-"] { transform-box: fill-box; transform-origin: center; }
+    
+    .hb-1 { animation: hb-d1 15s ease-in-out infinite alternate; }
+    .hb-2 { animation: hb-d2 19s ease-in-out infinite alternate; }
+    .hb-3 { animation: hb-d3 13s ease-in-out infinite alternate; }
+    .hb-4 { animation: hb-pulse 8s ease-in-out infinite; }
+    .hb-5 { animation: hb-pulse 11s ease-in-out -4s infinite; }
+    .hb-s1 { animation: hb-sweep 12s ease-in-out infinite; }
+    .hb-s2 { animation: hb-sweep 16s ease-in-out -7s infinite; }
+
+    @keyframes hb-d1 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(220px,-110px) scale(1.18); } 100% { transform: translate(-90px,120px) scale(.92); } }
+    @keyframes hb-d2 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-240px,90px) scale(1.15); } 100% { transform: translate(110px,-140px) scale(.94); } }
+    @keyframes hb-d3 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-200px,170px) scale(1.28); } }
+    @keyframes hb-pulse { 0%,100% { transform: translate(0,0) scale(1); opacity: .5; } 50% { transform: translate(110px,-70px) scale(1.3); opacity: 1; } }
+    @keyframes hb-sweep { 0% { transform: translateX(-620px) scaleX(.8); opacity: 0; } 25% { opacity: 1; } 75% { opacity: .9; } 100% { transform: translateX(620px) scaleX(1.1); opacity: 0; } }
+
+    /* SPOTLIGHT, SHINE PASS, SHADE */
+    .hero__spot { position: absolute; inset: 0; z-index: -2; pointer-events: none; mix-blend-mode: screen; background: radial-gradient(560px circle at calc(50% + var(--mx,0)*120%) calc(50% + var(--my,0)*120%), rgba(150,165,255,.38), rgba(150,165,255,0) 65%); }
+    .hero__shine { position: absolute; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+    .hero__shine i { position: absolute; top: 0; bottom: 0; left: 0; width: 33.33%; animation: hb-shine 9s ease-in-out infinite; background: linear-gradient(90deg, transparent, rgba(255,255,255,.13), transparent); }
+    @keyframes hb-shine { 0%,62% { transform: translateX(-130%) skewX(-18deg); } 100% { transform: translateX(260%) skewX(-18deg); } }
+    .hero__shade { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(10,13,46,.6), rgba(10,13,46,.2), transparent); }
+
+    /* ---------- WORDMARK BEYOND DX ANIMATIONS ---------- */
+    .wm { perspective: 1000px; width: 100%; }
+    .wm__tilt { position: relative; transform-style: preserve-3d; transform: rotateY(calc(var(--mx,0)*9deg)) rotateX(calc(var(--my,0)*-7deg)) translateY(calc(var(--sy,0)*-.08px)); }
+    .wm img { display: block; width: 100%; }
+    .wm__layer { position: absolute; inset: 0; pointer-events: none; }
+    .wm__layer--right { transform: translate3d(calc(var(--mx,0)*9px), 0, 0); }
+    .wm__layer--left { transform: translate3d(calc(var(--mx,0)*-9px), 0, 0); }
+    .wm__base { animation: hero-wipe 1.3s cubic-bezier(.22,.8,.22,1) .15s both; }
+    .wm__left { filter: drop-shadow(7px 9px 10px rgba(8,10,40,.38)); animation: x-left 1.1s cubic-bezier(.22,.8,.22,1) .75s both; }
+    .wm__right { animation: x-right 1.1s cubic-bezier(.22,.8,.22,1) .75s both; }
+    @keyframes hero-wipe { from { clip-path: inset(0 100% 0 0); opacity: 0; } to { clip-path: inset(0 0 0 0); opacity: 1; } }
+    @keyframes x-left { from { transform: translateX(-42%); opacity: 0; } 60% { opacity: 1; } to { transform: none; opacity: 1; } }
+    @keyframes x-right { from { transform: translateX(42%); opacity: 0; } 60% { opacity: 1; } to { transform: none; opacity: 1; } }
+    .wm__sheen { position: absolute; inset: 0; pointer-events: none; animation: hero-fade .8s ease 2s both; background: radial-gradient(circle at calc(50% + var(--mx,0)*90%) calc(50% + var(--my,0)*90%), rgba(150,165,255,.7), rgba(255,255,255,0) 55%); -webkit-mask: url("assets/brand-wordmark.png") center/contain no-repeat; mask: url("assets/brand-wordmark.png") center/contain no-repeat; }
+    @keyframes hero-fade { from { opacity: 0; } to { opacity: 1; } }
+
+    .rise { animation: hero-rise .9s cubic-bezier(.22,.8,.22,1) both; }
+    @keyframes hero-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; } }
   </style>
 </head>
-<body class="min-h-screen bg-[#0b0c2a] font-sans text-white antialiased">
+<body class="min-h-screen bg-[#0a0d2e] font-sans text-white antialiased">
   <header class="sticky top-0 z-50 border-b border-white/10 bg-[#1a1a64]/95 backdrop-blur">
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
       <a href="#top" class="flex shrink-0 items-center gap-3" aria-label="AICAPB home">
-        <img src="public/dap-logo-white.png" alt="Development Academy of the Philippines" class="h-10 w-auto object-contain sm:h-12">
-        <img src="public/brand-aicapb.png" alt="AICAPB" class="h-10 w-auto object-contain sm:h-12">
-        <img src="public/CSF.png" alt="Center for Strategic Futures" class="hidden h-10 w-auto object-contain sm:block sm:h-12">
+        <img src="assets/dap-logo-white.png" alt="Development Academy of the Philippines" class="h-10 w-auto object-contain sm:h-12" onError="this.src='public/dap-logo-white.png'">
+        <img src="assets/brand-aicapb.png" alt="AICAPB" class="h-10 w-auto object-contain sm:h-12" onError="this.src='public/brand-aicapb.png'">
+        <img src="assets/CSF.png" alt="Center for Strategic Futures" class="hidden h-10 w-auto object-contain sm:block sm:h-12" onError="this.src='public/CSF.png'">
       </a>
       <nav class="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
         <a href="#about-aicapb" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">About</a>
         <a href="#program-highlights" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Program</a>
         <a href="#speakers" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Speakers</a>
-        <a href="#exhibits" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Showcase</a>
         <a href="#venue" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Venue</a>
       </nav>
       <a href="#register" class="rounded-full bg-white px-5 py-2 text-sm font-bold text-[#1a1a64] shadow-md transition hover:bg-white/90">Register Now</a>
@@ -41,18 +85,53 @@
   </header>
 
   <main>
-    <section id="top" class="relative isolate flex min-h-screen items-center overflow-hidden bg-[#0a0d2e] text-white">
-      <div class="hero-bg" aria-hidden="true"></div><div class="hero-spot" aria-hidden="true"></div><div class="hero-shine" aria-hidden="true"></div><div class="hero-shade" aria-hidden="true"></div>
+    <!-- HERO SECTION -->
+    <section id="top" class="hero relative isolate flex min-h-screen items-center overflow-hidden bg-[#0a0d2e] text-white">
+      <!-- Animated SVG Background -->
+      <div class="hero__bg" aria-hidden="true">
+        <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <linearGradient id="hb-base" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0a0d2e"/><stop offset=".5" stop-color="#141a70"/><stop offset="1" stop-color="#24157e"/>
+            </linearGradient>
+            <radialGradient id="g-violet"><stop offset="0" stop-color="#7050ff" stop-opacity=".9"/><stop offset=".45" stop-color="#7050ff" stop-opacity=".36"/><stop offset="1" stop-color="#7050ff" stop-opacity="0"/></radialGradient>
+            <radialGradient id="g-blue"><stop offset="0" stop-color="#2f74ff" stop-opacity=".8"/><stop offset=".45" stop-color="#2f74ff" stop-opacity=".32"/><stop offset="1" stop-color="#2f74ff" stop-opacity="0"/></radialGradient>
+            <radialGradient id="g-magenta"><stop offset="0" stop-color="#d0449f" stop-opacity=".6"/><stop offset=".45" stop-color="#d0449f" stop-opacity=".24"/><stop offset="1" stop-color="#d0449f" stop-opacity="0"/></radialGradient>
+            <radialGradient id="g-sky"><stop offset="0" stop-color="#4fa8ff" stop-opacity=".55"/><stop offset=".45" stop-color="#4fa8ff" stop-opacity=".22"/><stop offset="1" stop-color="#4fa8ff" stop-opacity="0"/></radialGradient>
+            <radialGradient id="g-pink"><stop offset="0" stop-color="#ff6fb5" stop-opacity=".4"/><stop offset=".45" stop-color="#ff6fb5" stop-opacity=".16"/><stop offset="1" stop-color="#ff6fb5" stop-opacity="0"/></radialGradient>
+            <radialGradient id="g-streak"><stop offset="0" stop-color="#dfe4ff" stop-opacity=".9"/><stop offset=".35" stop-color="#9aa8ff" stop-opacity=".45"/><stop offset="1" stop-color="#7050ff" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="1600" height="900" fill="url(#hb-base)"/>
+          <circle class="hb-1" cx="280" cy="230" r="600" fill="url(#g-violet)"/>
+          <circle class="hb-2" cx="1330" cy="730" r="640" fill="url(#g-blue)"/>
+          <circle class="hb-3" cx="1200" cy="160" r="480" fill="url(#g-magenta)"/>
+          <circle class="hb-4" cx="760" cy="640" r="360" fill="url(#g-sky)"/>
+          <circle class="hb-5" cx="520" cy="90" r="300" fill="url(#g-pink)"/>
+          <g transform="rotate(-24 800 450)"><ellipse class="hb-s1" cx="800" cy="360" rx="760" ry="34" fill="url(#g-streak)"/></g>
+          <g transform="rotate(-24 800 450)"><ellipse class="hb-s2" cx="800" cy="610" rx="640" ry="22" fill="url(#g-streak)"/></g>
+        </svg>
+      </div>
+
+      <div class="hero__spot" aria-hidden="true"></div>
+      <div class="hero__shine" aria-hidden="true"><i></i></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      
       <div class="mx-auto w-full max-w-7xl px-6 py-16 lg:py-20">
         <p class="rise max-w-[14rem] text-xs font-semibold uppercase leading-tight tracking-[.18em] text-white/80">National Capability-Building Program on AI</p>
         <div class="mt-10 grid items-center gap-8 md:grid-cols-[minmax(0,22rem)_1px_1fr] md:gap-12">
-          <div class="relative w-44 [perspective:1000px] sm:w-56 md:w-full" aria-label="Beyond DX">
-            <img src="public/assets/dx-base.png" alt="Beyond DX" class="block w-full">
-            <img src="public/assets/dx-x-right.png" alt="" aria-hidden="true" class="absolute inset-0 block w-full animate-[rise_1.1s_ease_.75s_both]">
-            <img src="public/assets/dx-x-left.png" alt="" aria-hidden="true" class="absolute inset-0 block w-full animate-[rise_1.1s_ease_.75s_both]">
-            <img src="public/assets/brand-wordmark.png" alt="" aria-hidden="true" class="pointer-events-none absolute inset-0 h-full w-full object-contain opacity-25 [mask-image:radial-gradient(circle_at_center,black,transparent_56%)]">
+          
+          <!-- BEYOND DX Interactive Wordmark -->
+          <div class="wm w-44 sm:w-56 md:w-full" aria-label="Beyond DX">
+            <div class="wm__tilt">
+              <img class="wm__base" src="assets/dx-base.png" alt="" aria-hidden="true" onError="this.src='public/assets/dx-base.png'">
+              <div class="wm__layer wm__layer--right" aria-hidden="true"><img class="wm__right" src="assets/dx-x-right.png" alt="" onError="this.src='public/assets/dx-x-right.png'"></div>
+              <div class="wm__layer wm__layer--left" aria-hidden="true"><img class="wm__left" src="assets/dx-x-left.png" alt="" onError="this.src='public/assets/dx-x-left.png'"></div>
+              <div class="wm__sheen" aria-hidden="true"></div>
+            </div>
           </div>
+
           <div class="hidden h-full min-h-56 w-px bg-white/50 md:block"></div>
+          
           <div>
             <h1 class="rise text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">AI Transformation Forum for the Philippine Public Sector</h1>
             <div class="rise mt-6 space-y-2">
@@ -70,6 +149,7 @@
       <a href="#about-aicapb" aria-label="Scroll to About" class="absolute bottom-5 left-1/2 -translate-x-1/2 animate-bounce text-2xl text-white/60">⌄</a>
     </section>
 
+    <!-- STATS -->
     <section class="bg-[#0b0c2a] py-8 text-white">
       <div class="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 text-center sm:grid-cols-4">
         <div><span class="text-4xl font-extrabold text-[#e2e4ff] sm:text-5xl">250</span><p class="mt-2 text-xs font-semibold tracking-widest text-[#a1a5d2] sm:text-sm">PARTICIPANTS</p></div>
@@ -79,6 +159,7 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about-aicapb" class="bg-[#252585] px-4 py-16 sm:px-6">
       <div class="mx-auto max-w-6xl"><h2 class="text-center text-3xl font-bold">About</h2>
         <div class="mt-10 grid items-center gap-10 lg:grid-cols-2">
@@ -88,36 +169,15 @@
             <p>The forum is part of the <strong class="text-white">Development Academy of the Philippines’ National Capability-Building Program on AI (AI CapB)</strong>. Through video perspectives, live demonstrations, audience interaction, and a curated showcase, it connects public-sector capabilities with real applications, real institutional experiences, and emerging approaches to sustained AI transformation.</p>
           </div>
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <img src="public/aicapb-about-audience.jpg" alt="Participants attending an AICAPB discussion" class="aspect-square w-full rounded-lg object-cover" loading="lazy">
-            <img src="public/aicapb-about-workshop.jpg" alt="A facilitator leading a collaborative workshop" class="aspect-square w-full rounded-lg object-cover" loading="lazy">
-            <img src="public/aicapb-about-session.jpg" alt="A speaker presenting to workshop participants" class="aspect-square w-full rounded-lg object-cover" loading="lazy">
+            <img src="assets/aicapb-about-audience.jpg" alt="Participants attending an AICAPB discussion" class="aspect-square w-full rounded-lg object-cover" loading="lazy" onError="this.src='public/aicapb-about-audience.jpg'">
+            <img src="assets/aicapb-about-workshop.jpg" alt="A facilitator leading a collaborative workshop" class="aspect-square w-full rounded-lg object-cover" loading="lazy" onError="this.src='public/aicapb-about-workshop.jpg'">
+            <img src="assets/aicapb-about-session.jpg" alt="A speaker presenting to workshop participants" class="aspect-square w-full rounded-lg object-cover" loading="lazy" onError="this.src='public/aicapb-about-session.jpg'">
           </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-[#0b0c2a] px-4 py-20 sm:px-6 sm:py-24">
-      <div class="mx-auto mb-24 max-w-6xl sm:mb-32">
-        <div class="mx-auto max-w-4xl text-center"><h2 class="text-3xl font-bold sm:text-4xl">From DX to AX</h2><p class="mx-auto mt-5 max-w-4xl text-base leading-relaxed text-[#9399cb] sm:text-lg">Beyond DX is the next stage of government transformation, sometimes called AI transformation (AX). It is about more than new tools. It means change in:</p></div>
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">⚖ <span>Governance</span></div>
-          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">▣ <span>Infrastructure</span></div>
-          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">▤ <span>Procurement</span></div>
-          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">⚗ <span>Experimentation</span></div>
-          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">♧ <span>Workforce capabilities</span></div>
-          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">◇ <span>Leadership and institutional culture</span></div>
-        </div>
-      </div>
-      <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
-        <div class="lg:sticky lg:top-28 lg:h-fit"><p class="text-xs font-bold tracking-[.25em] text-[#9399cb]">BEYOND DX FORUM</p><h2 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">Understand the shift.<br><span class="text-[#888dbd]">See it in action.</span></h2><p class="mt-5 max-w-md text-base leading-relaxed text-[#888dbd]">Three outcomes from a half-day of perspectives, demonstrations, and conversation.</p><p class="mt-8 hidden items-center gap-3 text-xs font-semibold tracking-[.18em] text-[#888dbd] lg:flex">— &nbsp; KEEP SCROLLING</p></div>
-        <div class="relative pb-[12vh]">
-          <article class="sticky mb-6 flex min-h-[54vh] flex-col justify-between overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#183b9b] to-[#245ac7] p-7 shadow-2xl shadow-black/30 sm:p-10" style="top:6rem;z-index:1"><div class="flex justify-between gap-4"><span class="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[.65rem] font-bold tracking-[.2em]">UNDERSTAND THE SHIFT</span><span class="font-mono text-4xl font-light text-white/55">01</span></div><div class="max-w-xl py-10"><h3 class="text-4xl font-bold leading-tight sm:text-5xl">Build a shared understanding</h3><p class="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">See how digital transformation and responsible AI integration can advance a more effective, responsive, and accountable government.</p></div><p class="text-[.65rem] font-bold tracking-[.2em] text-white/65">FOUNDATIONS · ACCOUNTABILITY</p></article>
-          <article class="sticky mb-6 flex min-h-[54vh] flex-col justify-between overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#5634d7] to-[#7d4ce8] p-7 shadow-2xl shadow-black/30 sm:p-10" style="top:6.75rem;z-index:2"><div class="flex justify-between gap-4"><span class="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[.65rem] font-bold tracking-[.2em]">SEE IT IN ACTION</span><span class="font-mono text-4xl font-light text-white/55">02</span></div><div class="max-w-xl py-10"><h3 class="text-4xl font-bold leading-tight sm:text-5xl">Learn from real applications</h3><p class="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">Explore practical AI applications, implementation experiences, and lessons from government and selected partners.</p></div><p class="text-[.65rem] font-bold tracking-[.2em] text-white/65">LIVE DEMOS · LESSONS LEARNED</p></article>
-          <article class="sticky mb-6 flex min-h-[54vh] flex-col justify-between overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#be185d] to-[#ec4899] p-7 shadow-2xl shadow-black/30 sm:p-10" style="top:7.5rem;z-index:3"><div class="flex justify-between gap-4"><span class="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[.65rem] font-bold tracking-[.2em]">SHAPE WHAT’S NEXT</span><span class="font-mono text-4xl font-light text-white/55">03</span></div><div class="max-w-xl py-10"><h3 class="text-4xl font-bold leading-tight sm:text-5xl">Take the next step together</h3><p class="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">Share your insights on future priorities, practical next steps, and opportunities for collaboration toward responsible and sustained AI adoption.</p></div><p class="text-[.65rem] font-bold tracking-[.2em] text-white/65">COLLABORATION · NEXT STEPS</p></article>
-        </div>
-      </div>
-    </section>
-
+    <!-- PROGRAM HIGHLIGHTS -->
     <section id="program-highlights" class="bg-[#0b0c2a] px-4 py-16 sm:px-6">
       <div class="mx-auto max-w-4xl"><h2 class="text-center text-3xl font-bold sm:text-4xl">Program</h2><p class="mt-2 text-center text-base font-medium text-white/90">Thursday, 22 October 2026 <span class="mx-1 text-white/40">|</span> Conrad Manila</p><p class="mt-1 text-center text-xs text-[#a1a5d2]">Indicative program. Subject to change.</p>
         <div class="mt-10 overflow-hidden rounded-2xl border border-[#282b68] bg-[#131538]"><table class="w-full text-left text-sm"><tbody class="divide-y divide-[#222452]">
@@ -129,76 +189,116 @@
           <tr class="bg-[#2c305c]"><td colspan="2" class="px-6 py-4"><strong class="uppercase tracking-wide">SET 1: BUILDING THE FOUNDATIONS FOR AI-READY GOVERNMENT</strong><p class="mt-1 text-xs text-[#8f94c2]">Examine the governance and digital foundations required for responsible AI transformation in government.</p></td></tr>
           <tr id="video-voices"><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">9:40 – 9:50 AM</td><td class="px-6 py-4"><strong>Beyond DX Perspectives (Video)</strong><p class="mt-1 text-xs text-[#8f94c2]">DEPDev: Governing the Shift · DICT: Powering AI Transformation</p></td></tr>
           <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">9:50 – 10:20 AM</td><td class="px-6 py-4"><strong>AI in Action: Government Solutions (Stage Demo, 7 minutes each)</strong><p class="mt-1 text-xs text-[#8f94c2]">DBM: to be announced · ARTA: TALA · DOST-ASTI: to be announced · Quezon City Government: LyfSaver PH</p></td></tr>
-          <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">10:20 – 10:25 AM</td><td class="px-6 py-4"><strong>Ask the Implementers</strong><p class="mt-1 text-xs text-[#8f94c2]">Audience pulse and live questions to the teams behind the solutions.</p></td></tr>
           <tr class="bg-[#2c305c]"><td colspan="2" class="px-6 py-4"><strong class="uppercase tracking-wide">SET 2: MOVING FROM EXPERIMENTATION TO ADOPTION</strong><p class="mt-1 text-xs text-[#8f94c2]">Examine how procurement and experimentation can support responsible adoption and scale.</p></td></tr>
           <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">10:25 – 10:35 AM</td><td class="px-6 py-4"><strong>Beyond DX Perspectives (Video)</strong><p class="mt-1 text-xs text-[#8f94c2]">GPPB-TSO: What to Buy, Build, and Share · DOST-ASTI: From Pilots to Scale</p></td></tr>
           <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">10:35 – 11:05 AM</td><td class="px-6 py-4"><strong>AI in Action: Private-Sector Solutions for Public Value</strong><p class="mt-1 text-xs text-[#8f94c2]">Hiraia.org: Hiraia · DARC Labs: A-Eye · Packworks: Sari IQ</p></td></tr>
-          <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">11:05 – 11:10 AM</td><td class="px-6 py-4"><strong>Ask the Implementers</strong><p class="mt-1 text-xs text-[#8f94c2]">Audience pulse and live questions to the teams behind the solutions.</p></td></tr>
           <tr class="bg-[#2c305c]"><td colspan="2" class="px-6 py-4"><strong class="uppercase tracking-wide">SET 3: INSTITUTIONALIZING SUSTAINED AI TRANSFORMATION</strong><p class="mt-1 text-xs text-[#8f94c2]">Discover approaches to capacity building and long-term organizational transformation.</p></td></tr>
           <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">11:10 – 11:15 AM</td><td class="px-6 py-4"><strong>Beyond DX Perspectives (Video)</strong><p class="mt-1 text-xs text-[#8f94c2]">DAP: Equipping Government for AI</p></td></tr>
           <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">11:15 – 11:45 AM</td><td class="px-6 py-4"><strong>AI in Action: DAP Innovations</strong><p class="mt-1 text-xs text-[#8f94c2]">CSF: TrendsWatch 2.0 · Services Group: Project ORACLE · CCD: TUKLAS</p></td></tr>
-          <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">11:50 – 11:55 AM</td><td class="px-6 py-4"><strong>Ask the Implementers</strong><p class="mt-1 text-xs text-[#8f94c2]">Audience pulse and live questions to the teams behind the solutions.</p></td></tr>
-          <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">11:55 AM – 12:00 PM</td><td class="px-6 py-4"><strong>Connecting the Dots: From Insight to Action</strong><p class="mt-1 text-xs text-[#8f94c2]">Synthesis of the key messages and insights from the three sets</p></td></tr>
-          <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">12:00 – 12:05 PM</td><td class="px-6 py-4"><strong>From Pulse to Insight</strong><p class="mt-1 text-xs text-[#8f94c2]">Presentation of the audience-pulse results</p></td></tr>
           <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">12:05 – 12:10 PM</td><td class="px-6 py-4"><strong>Closing Message</strong><p class="mt-1 text-xs text-[#8f94c2]">Magdalena L. Mendoza<br>Executive Vice President</p></td></tr>
-          <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">12:10 – 1:30 PM</td><td class="px-6 py-4"><strong>Lunch, AI Showcase, and Networking</strong></td></tr>
+          <tr><td class="whitespace-nowrap px-6 py-4 align-top text-[#8f94c2]">12:10 – 1:30 PM</td><td class="px-6 py-4"><strong>Lunch and Networking</strong></td></tr>
         </tbody></table></div>
       </div>
     </section>
 
+    <!-- FEATURED SPEAKERS -->
     <section id="speakers" class="bg-[#151a5e] px-5 py-12 font-sans text-white"><div class="mx-auto max-w-5xl"><div class="mb-8 text-center"><h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Featured Speaker</h2></div>
       <div class="relative isolate overflow-hidden rounded-3xl border border-white/15 text-white shadow-2xl" style="background:radial-gradient(60% 120% at 6% 45%,rgba(120,150,255,.5),transparent 60%),radial-gradient(50% 100% at 58% 0%,rgba(112,80,255,.55),transparent 65%),radial-gradient(60% 120% at 100% 100%,rgba(208,68,159,.45),transparent 60%),linear-gradient(120deg,#0e1250,#1b1470 55%,#2a1a7a)">
-        <div class="grid grid-cols-1 md:grid-cols-[15rem_minmax(0,1fr)_minmax(0,1.3fr)]"><div class="relative h-72 md:h-auto md:min-h-[17rem]"><img src="public/maria.webp" alt="Maria Francesca ‘Sasa’ M. Del Rosario" class="absolute inset-0 block h-full w-full object-cover object-top [mask-image:linear-gradient(to_bottom,#000_72%,transparent)] md:[mask-image:linear-gradient(to_right,#000_70%,transparent)]"></div>
+        <div class="grid grid-cols-1 md:grid-cols-[15rem_minmax(0,1fr)_minmax(0,1.3fr)]"><div class="relative h-72 md:h-auto md:min-h-[17rem]"><img src="assets/maria.webp" alt="Maria Francesca ‘Sasa’ M. Del Rosario" class="absolute inset-0 block h-full w-full object-cover object-top [mask-image:linear-gradient(to_bottom,#000_72%,transparent)] md:[mask-image:linear-gradient(to_right,#000_70%,transparent)]" onError="this.src='public/maria.webp'"></div>
           <div class="flex flex-col justify-center px-6 py-2 md:p-8"><p class="m-0 text-xl font-bold leading-snug">Maria Francesca “Sasa” M. Del Rosario</p><p class="mt-2 text-sm italic text-white/75">Undersecretary, Department of Energy (DOE)</p></div>
           <div class="flex flex-col justify-center border-t border-white/25 p-6 md:border-l md:border-t-0 md:p-10"><p class="m-0 text-3xl font-extrabold uppercase leading-none tracking-tight md:text-4xl">Keynote Speech</p><p class="mt-4 text-base leading-relaxed text-white/90 md:text-lg">Beyond DX: Reimagining Government and Public Value in the Age of AI</p></div>
         </div>
       </div>
     </div></section>
 
-    <section id="exhibits" class="bg-[#1a1a64]/95 px-4 py-16 sm:px-6"><div class="mx-auto max-w-6xl"><h2 class="text-center text-3xl font-bold">AI Showcase</h2><p class="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-white/70">After the program, step into the exhibit area to see selected applications up close and meet the teams behind them. 16 exhibitors will be on the floor.</p><div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-      <div class="text-center"><img src="public/1explo.png" alt="See applications up close" class="aspect-[4/3] w-full rounded-lg object-cover" loading="lazy"><p class="mt-3 text-sm leading-snug text-white/80">See applications up close</p></div>
-      <div class="text-center"><img src="public/2explo.png" alt="Meet the teams behind them" class="aspect-[4/3] w-full rounded-lg object-cover" loading="lazy"><p class="mt-3 text-sm leading-snug text-white/80">Meet the teams behind them</p></div>
-      <div class="text-center"><img src="public/3explo.png" alt="Find opportunities to collaborate" class="aspect-[4/3] w-full rounded-lg object-cover" loading="lazy"><p class="mt-3 text-sm leading-snug text-white/80">Find opportunities to collaborate</p></div>
-    </div></div></section>
-
-    <section id="floor-plan" class="bg-[#0b0c2a] px-4 py-16 sm:px-6"><div class="mx-auto max-w-7xl"><div class="mb-8"><h2 class="text-3xl font-bold">AICAPB 2026 Exhibitor Floor Plan</h2><p class="mt-2 text-sm text-[#8f94c2]">Select a booth on the floor plan to explore its featured technology.</p><div class="mt-4 flex gap-5 text-xs text-[#8f94c2]"><span>🟦 Available booth</span><span>🟨 Selected booth</span></div></div>
-      <div class="grid items-start gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(18rem,.9fr)]"><div class="rounded-2xl bg-white p-2 shadow-xl sm:p-3"><div id="map-viewport" class="relative w-full overflow-hidden rounded-lg touch-none" style="aspect-ratio:1195/1240"><div id="map-content" class="absolute inset-0 origin-center transition-transform duration-150"><img src="public/floorplan2-cropped.png" alt="AICAPB exhibitor floor plan with booths B01 to B16" class="absolute inset-0 h-full w-full object-contain">
-        <button class="booth selected absolute left-[11%] top-[35.5%]" data-booth="B01">B01</button><button class="booth absolute left-[11%] top-[41.1%]" data-booth="B02">B02</button><button class="booth absolute left-[11%] top-[46.7%]" data-booth="B03">B03</button><button class="booth absolute left-[11%] top-[52.3%]" data-booth="B04">B04</button><button class="booth absolute left-[11%] top-[57.9%]" data-booth="B05">B05</button><button class="booth absolute left-[11%] top-[63.5%]" data-booth="B06">B06</button><button class="booth absolute left-[11%] top-[69.1%]" data-booth="B07">B07</button><button class="booth absolute left-[11%] top-[74.7%]" data-booth="B08">B08</button>
-        <button class="booth absolute left-[95.3%] top-[35.5%]" data-booth="B09">B09</button><button class="booth absolute left-[95.3%] top-[41.1%]" data-booth="B10">B10</button><button class="booth absolute left-[95.3%] top-[46.7%]" data-booth="B11">B11</button><button class="booth absolute left-[95.3%] top-[52.3%]" data-booth="B12">B12</button><button class="booth absolute left-[95.3%] top-[57.9%]" data-booth="B13">B13</button><button class="booth absolute left-[95.3%] top-[63.5%]" data-booth="B14">B14</button><button class="booth absolute left-[95.3%] top-[69.1%]" data-booth="B15">B15</button><button class="booth absolute left-[95.3%] top-[74.7%]" data-booth="B16">B16</button>
-      </div><div class="absolute right-3 top-3 z-40 flex items-center gap-1 rounded-xl border border-slate-200 bg-white/95 p-1 text-slate-700 shadow-md"><button id="zoom-out" class="rounded-lg p-2 hover:bg-slate-100" aria-label="Zoom out">−</button><span id="zoom-label" class="min-w-12 text-center text-xs font-bold">100%</span><button id="zoom-in" class="rounded-lg p-2 hover:bg-slate-100" aria-label="Zoom in">+</button><button id="zoom-reset" class="rounded-lg p-2 hover:bg-slate-100" aria-label="Reset zoom">↻</button></div></div></div>
-      <aside class="min-h-72 overflow-hidden rounded-2xl border border-[#282b68] shadow-2xl"><div class="bg-white text-slate-800"><div class="bg-[#003d68] p-6 text-white"><p id="booth-number" class="text-xs font-semibold uppercase tracking-[.18em] text-[#38bdf8]">BOOTH B01</p><h3 id="booth-name" class="mt-1 text-2xl font-bold">CivicAI</h3><span id="booth-category" class="mt-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs">Public-service AI</span></div><div class="p-6"><p id="booth-description" class="text-sm leading-relaxed text-slate-600">Explore a conversational AI assistant that helps people find clear, accessible information about public services.</p><div class="mt-6 rounded-xl bg-[#f0f7ff] p-4 text-[#003d68]"><p class="text-xs font-bold uppercase tracking-wider">✦ Featured demonstration</p><p id="booth-demo" class="mt-2 text-xs leading-relaxed text-slate-700">A live question-and-answer demo using sample government-service information.</p></div><p class="mt-6 text-[11px] text-slate-400">Sample exhibitor profile — details can be replaced with confirmed exhibitor information.</p></div></div></aside></div>
-    </div></section>
-
-    <section class="bg-[#252585] px-4 py-16 text-white sm:px-6 sm:py-20"><div class="mx-auto max-w-6xl"><div class="text-center"><h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Who should attend</h2><p class="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-[#a1a5d2] sm:text-base">The forum is designed for public-sector institutions and personnel who can influence, support, or implement AI adoption in government.</p></div><div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 shadow-sm"><span class="text-2xl">♙</span><span class="text-sm font-semibold sm:text-base">National government executives and managers</span></div>
-      <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 shadow-sm"><span class="text-2xl">▦</span><span class="text-sm font-semibold sm:text-base">LGU executives and key personnel</span></div>
-      <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 shadow-sm"><span class="text-2xl">✦</span><span class="text-sm font-semibold sm:text-base">National Innovation Council member organizations</span></div>
-      <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 shadow-sm"><span class="text-2xl">♧</span><span class="text-sm font-semibold sm:text-base">Participants and partners of the AI CapB</span></div>
-      <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 shadow-sm"><span class="text-2xl">⌂</span><span class="text-sm font-semibold sm:text-base">Academe, development partners, and technology organizations</span></div>
-      <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 shadow-sm"><span class="text-2xl">➤</span><span class="text-sm font-semibold sm:text-base">Innovation groups, including Filipinnovation finalists and startups</span></div>
-    </div></div></section>
-
+    <!-- VENUE AND REGISTER FORM -->
     <section id="register" class="bg-[#0b0c2a] px-4 py-16 text-white sm:px-6 sm:py-20"><div class="mx-auto max-w-3xl">
-      <div id="venue" class="mb-20"><h2 class="mb-8 text-center text-3xl font-bold tracking-tight sm:text-4xl">Event Venue</h2><div class="grid items-center gap-8 rounded-2xl border border-[#282b68] bg-[#131538] p-6 sm:p-8 md:grid-cols-2"><div class="aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10 bg-[#0b0c2a]"><img src="public/Conrad.png" alt="Conrad Manila Venue" class="h-full w-full object-cover"></div><div class="flex flex-col justify-center"><h3 class="text-2xl font-bold sm:text-3xl">Conrad Manila</h3><div class="mt-4 space-y-3 text-sm text-[#a1a5d2]"><p>⌖ &nbsp;Seaside Boulevard corner Coral Way, Mall of Asia Complex, Pasay City 1300</p><p>▦ &nbsp;Thursday, 22 October 2026 | Registration opens 8:30 AM | Program 9:00 AM – 1:30 PM</p></div><div class="mt-6"><a href="https://maps.google.com/?q=Conrad+Manila" target="_blank" rel="noopener noreferrer" class="inline-flex rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-[#0b0c2a] shadow-md hover:bg-slate-100">Open in Google Maps ↗</a></div></div></div></div>
+      <div id="venue" class="mb-20"><h2 class="mb-8 text-center text-3xl font-bold tracking-tight sm:text-4xl">Event Venue</h2><div class="grid items-center gap-8 rounded-2xl border border-[#282b68] bg-[#131538] p-6 sm:p-8 md:grid-cols-2"><div class="aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10 bg-[#0b0c2a]"><img src="assets/Conrad.png" alt="Conrad Manila Venue" class="h-full w-full object-cover" onError="this.src='public/Conrad.png'"></div><div class="flex flex-col justify-center"><h3 class="text-2xl font-bold sm:text-3xl">Conrad Manila</h3><div class="mt-4 space-y-3 text-sm text-[#a1a5d2]"><p>⌖ &nbsp;Seaside Boulevard corner Coral Way, Mall of Asia Complex, Pasay City 1300</p><p>▦ &nbsp;Thursday, 22 October 2026 | Registration opens 8:30 AM | Program 9:00 AM – 1:30 PM</p></div><div class="mt-6"><a href="https://maps.google.com/?q=Conrad+Manila" target="_blank" rel="noopener noreferrer" class="inline-flex rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-[#0b0c2a] shadow-md hover:bg-slate-100">Open in Google Maps ↗</a></div></div></div></div>
       <div class="text-center"><h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Register</h2><p class="mt-2 text-sm text-[#a1a5d2] sm:text-base">Confirm your attendance at the Beyond DX Forum.</p><p class="mt-3 text-xs font-medium text-[#a1a5d2] sm:text-sm">22 October 2026 &nbsp;|&nbsp; Conrad Manila, Pasay City</p></div>
-      <div class="mt-10 rounded-2xl border border-[#282b68] bg-[#131538] p-6 shadow-2xl sm:p-10"><form class="space-y-6" onsubmit="event.preventDefault(); document.getElementById('static-form-note').classList.remove('hidden')"><label class="block text-xs font-semibold uppercase tracking-wider text-[#a1a5d2]">Full Name <span class="text-red-400">*</span><input required type="text" name="name" placeholder="Enter your full name" class="mt-2 w-full rounded-lg border border-[#282b68] bg-[#0b0c2a] px-4 py-3 text-sm normal-case text-white placeholder-[#a1a5d2]/40 focus:border-[#facc15] focus:outline-none"></label><label class="block text-xs font-semibold uppercase tracking-wider text-[#a1a5d2]">Position <span class="text-red-400">*</span><input required type="text" name="position" placeholder="e.g. Director IV / IT Specialist" class="mt-2 w-full rounded-lg border border-[#282b68] bg-[#0b0c2a] px-4 py-3 text-sm normal-case text-white placeholder-[#a1a5d2]/40 focus:border-[#facc15] focus:outline-none"></label><label class="block text-xs font-semibold uppercase tracking-wider text-[#a1a5d2]">Agency / Organization <span class="text-red-400">*</span><input required type="text" name="agency" placeholder="e.g. Department of Information and Communications Technology" class="mt-2 w-full rounded-lg border border-[#282b68] bg-[#0b0c2a] px-4 py-3 text-sm normal-case text-white placeholder-[#a1a5d2]/40 focus:border-[#facc15] focus:outline-none"></label><label class="block text-xs font-semibold uppercase tracking-wider text-[#a1a5d2]">Email Address <span class="text-red-400">*</span><input required type="email" name="email" placeholder="name@agency.gov.ph" class="mt-2 w-full rounded-lg border border-[#282b68] bg-[#0b0c2a] px-4 py-3 text-sm normal-case text-white placeholder-[#a1a5d2]/40 focus:border-[#facc15] focus:outline-none"></label><p id="static-form-note" class="hidden text-center text-xs text-amber-300">This standalone preview does not submit registrations.</p><button type="submit" class="w-full rounded-lg bg-white py-3.5 text-sm font-bold text-[#0b0c2a] shadow-md transition hover:bg-slate-100 active:scale-[.99]">Submit Registration</button></form></div>
+      <div class="mt-10 rounded-2xl border border-[#282b68] bg-[#131538] p-6 shadow-2xl sm:p-10">
+        <form class="space-y-6" onsubmit="submitRegistration(event)">
+          <label class="block text-xs font-semibold uppercase tracking-wider text-[#a1a5d2]">Full Name <span class="text-red-400">*</span>
+            <input required type="text" name="name" placeholder="Enter your full name" class="mt-2 w-full rounded-lg border border-[#282b68] bg-[#0b0c2a] px-4 py-3 text-sm normal-case text-white placeholder-[#a1a5d2]/40 focus:border-[#facc15] focus:outline-none">
+          </label>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-[#a1a5d2]">Position <span class="text-red-400">*</span>
+            <input required type="text" name="position" placeholder="e.g. Director IV / IT Specialist" class="mt-2 w-full rounded-lg border border-[#282b68] bg-[#0b0c2a] px-4 py-3 text-sm normal-case text-white placeholder-[#a1a5d2]/40 focus:border-[#facc15] focus:outline-none">
+          </label>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-[#a1a5d2]">Agency / Organization <span class="text-red-400">*</span>
+            <input required type="text" name="agency" placeholder="e.g. Department of Information and Communications Technology" class="mt-2 w-full rounded-lg border border-[#282b68] bg-[#0b0c2a] px-4 py-3 text-sm normal-case text-white placeholder-[#a1a5d2]/40 focus:border-[#facc15] focus:outline-none">
+          </label>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-[#a1a5d2]">Email Address <span class="text-red-400">*</span>
+            <input required type="email" name="email" placeholder="name@agency.gov.ph" class="mt-2 w-full rounded-lg border border-[#282b68] bg-[#0b0c2a] px-4 py-3 text-sm normal-case text-white placeholder-[#a1a5d2]/40 focus:border-[#facc15] focus:outline-none">
+          </label>
+          <p id="static-form-note" class="hidden text-center text-xs" role="status" aria-live="polite"></p>
+          <button type="submit" class="w-full rounded-lg bg-white py-3.5 text-sm font-bold text-[#0b0c2a] shadow-md transition hover:bg-slate-100 active:scale-[.99]">Submit Registration</button>
+        </form>
+      </div>
     </div></section>
   </main>
 
-  <footer class="border-t border-white/10 bg-[#0b0c2a] text-white"><div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8"><div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-6"><div class="flex items-start justify-center md:justify-start"><img src="public/RNP%20Logo%20transparent.png" alt="Republika ng Pilipinas Coat of Arms" class="h-28 w-auto object-contain opacity-90"></div><div><h3 class="text-xs font-bold uppercase tracking-wider">Government Links</h3><ul class="mt-3 space-y-2 text-xs font-medium text-white/70"><li><a href="https://op-proper.gov.ph/">Office of the President</a></li><li><a href="https://ovp.gov.ph/">Office of the Vice President</a></li><li><a href="https://senate.gov.ph/">Senate of the Philippines</a></li><li><a href="https://www.house.gov.ph/">House of Representatives</a></li><li><a href="https://sc.judiciary.gov.ph/">Supreme Court</a></li><li><a href="https://ca.judiciary.gov.ph/">Court of Appeals</a></li><li><a href="https://sb.judiciary.gov.ph/">Sandiganbayan</a></li></ul></div><div><h3 class="text-xs font-bold uppercase tracking-wider">Good Governance</h3><ul class="mt-3 space-y-2 text-xs text-white/70"><li><a href="#transparency">Transparency Seal</a></li><li><a href="#transparency-portal">Transparency Portal</a></li><li><a href="https://www.foi.gov.ph/">Freedom of Information</a></li><li><a href="https://whistleblowing.gcg.gov.ph/">GCG Whistleblowing Portal</a></li><li><a href="#citizens-charter">Citizen’s Charter</a></li><li><a href="#client-satisfaction">Client Satisfaction Measurement Survey</a></li><li><a href="#data-privacy-seal">Data Privacy Seal</a></li><li><a href="#privacy-notice">Privacy and Copyright Notice</a></li></ul></div><div><h3 class="text-xs font-bold uppercase tracking-wider">About GOVPH</h3><p class="mt-3 text-xs leading-relaxed text-white/70">Learn more about the Philippine government, its structure, how government works and the people behind it.</p><a href="https://www.gov.ph" class="mt-4 inline-block rounded-xl border border-red-500 bg-white/5 px-6 py-2 text-xs font-bold text-red-500">GOVPH</a><p class="mt-3 text-xs text-white/70"><a href="https://data.gov.ph/">Open Data Portal</a><br><a href="https://www.officialgazette.gov.ph/">Official Gazette</a></p></div><div><h3 class="text-xs font-bold uppercase tracking-wider">Republic of the Philippines</h3><p class="mt-3 text-xs leading-relaxed text-white/70">All content is in the public domain unless otherwise stated.</p></div><div><h3 class="text-xs font-bold uppercase tracking-wider">Follow Us</h3><div class="mt-3 grid w-fit grid-cols-3 gap-2"><a href="https://www.facebook.com/dapcsf" aria-label="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full bg-[#131538] hover:bg-[#0084c7]">f</a><a href="https://linkedin.com" aria-label="LinkedIn" class="flex h-10 w-10 items-center justify-center rounded-full bg-[#131538] hover:bg-[#0084c7]">in</a><a href="https://youtube.com" aria-label="YouTube" class="flex h-10 w-10 items-center justify-center rounded-full bg-[#131538] hover:bg-[#0084c7]">▶</a><a href="https://www.instagram.com/centerforstrategicfutures/" aria-label="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full bg-[#131538] hover:bg-[#0084c7]">◎</a></div></div></div><div class="my-10 border-t border-white/10"></div><div class="flex flex-col items-center gap-6 text-center"><img src="public/dap-logo-white.png" alt="Development Academy of the Philippines" class="h-16 w-auto object-contain"><p class="max-w-3xl text-xs leading-relaxed text-white/50">Beyond DX: AI Transformation Forum for the Philippine Public Sector is part of the National Capability-Building Program on AI of the Development Academy of the Philippines - Center for Strategic Futures.</p><p class="text-xs text-white/40">© 2026 Development Academy of the Philippines. All rights reserved.</p></div></div></footer>
+  <footer class="border-t border-white/10 bg-[#0b0c2a] text-white">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center gap-6 text-center">
+        <img src="assets/dap-logo-white.png" alt="Development Academy of the Philippines" class="h-16 w-auto object-contain" onError="this.src='public/dap-logo-white.png'">
+        <p class="max-w-3xl text-xs leading-relaxed text-white/50">Beyond DX: AI Transformation Forum for the Philippine Public Sector is part of the National Capability-Building Program on AI of the Development Academy of the Philippines - Center for Strategic Futures.</p>
+        <p class="text-xs text-white/40">© 2026 Development Academy of the Philippines. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-  <style>.booth{transform:translate(-50%,-50%);height:3.8%;width:4.8%;min-width:24px;display:flex;align-items:center;justify-content:center;border-radius:.375rem;background:#0084c7;color:white;font-weight:700;font-size:clamp(.55rem,.75vw,.8rem);box-shadow:0 4px 8px #0003}.booth.selected{background:#facc15;color:#0f172a;outline:4px solid #facc1566;z-index:30;transform:translate(-50%,-50%) scale(1.1)}#cursor-trail{position:fixed;inset:0;z-index:40;width:100%;height:100%;pointer-events:none}</style>
-  <canvas id="cursor-trail" aria-hidden="true"></canvas>
   <script>
-    const boothInfo={B01:['CivicAI','Public-service AI','Explore a conversational AI assistant that helps people find clear, accessible information about public services.','A live question-and-answer demo using sample government-service information.'],B02:['AgriSense','AI for agriculture','See how computer vision and local data can help farmers monitor crops and identify potential issues earlier.','Crop image analysis and a sample farm monitoring dashboard.'],B03:['HealthLens','AI for health','Discover responsible AI concepts for organizing health information and supporting better-informed care teams.','A privacy-conscious example of AI-assisted health data review.'],B04:['Resilient PH','Disaster resilience','Explore how data visualization can help communities understand hazards and prepare for emergencies.','An interactive sample risk map with preparedness information.'],B05:['GovData Lab','Data interoperability','Learn how connected, well-governed data can support collaboration and evidence-based decisions across agencies.','A sample dashboard combining insights from multiple datasets.'],B06:['RoboWorks','Robotics and automation','Meet practical robotics and automation concepts designed to support people and improve everyday operations.','A small-scale automation workflow and interactive robotics showcase.'],B07:['VisionForge','Computer vision','See how computer vision can help teams identify patterns in images and video for practical local applications.','A sample object-detection demo using a curated set of images.'],B08:['LanguageWorks','Language technology','Explore AI tools for working with documents and supporting access to information in local contexts.','A sample document summarization and multilingual search experience.'],B09:['CyberShield','Cybersecurity','Learn about AI-assisted approaches to identifying unusual activity and strengthening cyber resilience.','A simulated security dashboard highlighting sample network alerts.'],B10:['DataBridge','Data interoperability','Discover ways to connect information systems while supporting responsible data governance.','A visual walkthrough of a sample data-sharing workflow.'],B11:['ClimateIQ','Climate intelligence','Explore how data analysis can help communities understand environmental trends and climate risks.','An interactive sample climate and local-impact visualization.'],B12:['LearnAI','Education technology','See how adaptive learning concepts can support educators and create more personalized learning experiences.','A sample learning assistant that recommends practice activities.'],B13:['FinSight','Analytics and insights','Explore data analytics concepts for understanding trends and supporting evidence-based planning.','A sample interactive dashboard with explainable data insights.'],B14:['AssistiveTech PH','Accessibility technology','Discover inclusive technology ideas that can make digital information and services easier to access.','A hands-on showcase of assistive interfaces and accessibility tools.'],B15:['SmartGrid Lab','Smart infrastructure','Learn how connected sensors and AI can support more efficient infrastructure monitoring.','A sample sensor-data visualization for infrastructure operations.'],B16:['Innovation Hub','Emerging technology','Explore early-stage ideas and collaborative prototypes addressing local technology challenges.','A rotating showcase of sample AI and emerging-technology prototypes.']};
-    const mapViewport=document.getElementById('map-viewport'),mapContent=document.getElementById('map-content'),zoomLabel=document.getElementById('zoom-label');let zoom=1,panX=0,panY=0,drag=null;
-    function renderMap(){mapContent.style.transform=`translate(${panX}px,${panY}px) scale(${zoom})`;zoomLabel.textContent=`${Math.round(zoom*100)}%`;}
-    function setZoom(amount){zoom=Math.max(1,Math.min(2.2,zoom+amount));if(zoom===1){panX=0;panY=0}renderMap()}
-    document.getElementById('zoom-in').addEventListener('click',()=>setZoom(.2));document.getElementById('zoom-out').addEventListener('click',()=>setZoom(-.2));document.getElementById('zoom-reset').addEventListener('click',()=>{zoom=1;panX=0;panY=0;renderMap()});
-    document.querySelectorAll('.booth').forEach(button=>button.addEventListener('click',()=>{document.querySelector('.booth.selected')?.classList.remove('selected');button.classList.add('selected');const [name,category,description,demo]=boothInfo[button.dataset.booth];document.getElementById('booth-number').textContent=`BOOTH ${button.dataset.booth}`;document.getElementById('booth-name').textContent=name;document.getElementById('booth-category').textContent=category;document.getElementById('booth-description').textContent=description;document.getElementById('booth-demo').textContent=demo}));
-    mapViewport.addEventListener('pointerdown',event=>{if(zoom<=1||event.target.closest('button'))return;drag={x:event.clientX,y:event.clientY,panX,panY};mapViewport.setPointerCapture(event.pointerId)});mapViewport.addEventListener('pointermove',event=>{if(!drag)return;const limitX=mapViewport.clientWidth*(zoom-1)/2,limitY=mapViewport.clientHeight*(zoom-1)/2;panX=Math.max(-limitX,Math.min(limitX,drag.panX+event.clientX-drag.x));panY=Math.max(-limitY,Math.min(limitY,drag.panY+event.clientY-drag.y));renderMap()});['pointerup','pointercancel'].forEach(type=>mapViewport.addEventListener(type,()=>{drag=null}));
-    document.documentElement.style.setProperty('--mx','50%');document.addEventListener('pointermove',event=>{const hero=document.querySelector('#top');if(!hero)return;const rect=hero.getBoundingClientRect();if(event.clientY>=rect.top&&event.clientY<=rect.bottom){hero.style.setProperty('--mx',`${event.clientX-rect.left}px`);hero.style.setProperty('--my',`${event.clientY-rect.top}px`)}});
-    (()=>{const canvas=document.getElementById('cursor-trail'),ctx=canvas.getContext('2d');let particles=[],frame=null,w=0,h=0,ratio=1;function resize(){ratio=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=w*ratio;canvas.height=h*ratio;ctx.setTransform(ratio,0,0,ratio,0,0)}function draw(now){ctx.clearRect(0,0,w,h);particles=particles.filter(p=>now-p.born< p.life);for(const p of particles){const progress=(now-p.born)/p.life,fade=Math.sin(Math.PI*progress),x=p.x+p.vx*(now-p.born),y=p.y+p.vy*(now-p.born),r=p.r*(.5+fade*.35),glow=ctx.createRadialGradient(x,y,0,x,y,r*4);glow.addColorStop(0,`rgba(255,250,190,${fade*.95})`);glow.addColorStop(.18,`rgba(255,213,74,${fade*.75})`);glow.addColorStop(1,'rgba(255,190,35,0)');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(x,y,r*4,0,Math.PI*2);ctx.fill();ctx.fillStyle=`rgba(255,250,205,${fade})`;ctx.beginPath();ctx.arc(x,y,Math.max(.7,r*.4),0,Math.PI*2);ctx.fill()}if(particles.length)frame=requestAnimationFrame(draw);else frame=null}resize();addEventListener('resize',resize);addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;const now=performance.now();for(let i=0;i<3;i++)particles.push({x:e.clientX+(Math.random()-.5)*12,y:e.clientY+(Math.random()-.5)*12,born:now,life:750+Math.random()*250,r:2+Math.random()*4,vx:(Math.random()-.5)*.035,vy:-.015-Math.random()*.035});particles=particles.slice(-90);if(frame===null)frame=requestAnimationFrame(draw)},{passive:true})})();
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtfcAO7dOTzgxi-deXwLZ5CbijyCLUqJz14DOFLLu5W-h0IwfHG1AwU78E1fJVK_GU/exec';
+    
+    async function submitRegistration(event) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const button = form.querySelector('button[type="submit"]');
+      const note = document.getElementById('static-form-note');
+
+      button.disabled = true;
+      button.textContent = 'Submitting...';
+      note.className = 'hidden text-center text-xs';
+
+      try {
+        const formData = Object.fromEntries(new FormData(form).entries());
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        note.textContent = 'Registration submitted. Thank you!';
+        note.className = 'text-center text-xs text-emerald-400 block mt-3';
+        form.reset();
+      } catch (error) {
+        console.error(error);
+        note.textContent = 'There was a problem submitting your registration. Please try again.';
+        note.className = 'text-center text-xs text-red-400 block mt-3';
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Submit Registration';
+      }
+    }
+
+    /* MOUSE PARALLAX TRACKING SCRIPT */
+    (function () {
+      var hero = document.getElementById("top");
+      if (!hero || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var tx = 0, ty = 0, x = 0, y = 0;
+      window.addEventListener("pointermove", function (e) {
+        if (e.pointerType === "touch") return;
+        var r = hero.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width - 0.5;
+        ty = (e.clientY - r.top) / r.height - 0.5;
+      }, { passive: true });
+      (function tick() {
+        x += (tx - x) * 0.07; y += (ty - y) * 0.07;
+        hero.style.setProperty("--mx", x.toFixed(3));
+        hero.style.setProperty("--my", y.toFixed(3));
+        hero.style.setProperty("--sy", String(Math.min(window.scrollY, 900)));
+        requestAnimationFrame(tick);
+      })();
+    })();
   </script>
 </body>
 </html>
