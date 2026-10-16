@@ -1354,7 +1354,7 @@
                   Maria Francesca “Sasa” M. Del Rosario
                 </p>
                 <p class="mt-2 text-xs italic text-white/75 sm:text-sm">
-                  Undersecretary, Department of Energy (DOE)
+                  Undersecretary, Department of Energy
                 </p>
               </div>
               <div
@@ -1441,266 +1441,179 @@
   </div>
 </section>
 
-      <!-- FLOOR PLAN / AI SHOWCASE SECTION -->
-      <section id="floor-plan" class="bg-[#0b0c2a] px-4 py-12 sm:px-6 sm:py-16">
-        <div class="mx-auto max-w-7xl">
-          <div class="mb-6 sm:mb-8">
-            <h2 class="text-2xl font-bold text-white sm:text-3xl">
-              AI Showcase
-            </h2>
-            <p class="mt-2 text-xs text-[#8f94c2] sm:text-sm">
-              Check out the exhibit floor plan below. Select a booth for more
-              details about the exhibitor!
-            </p>
-            <div
-              class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#8f94c2]"
-            >
-              <span class="inline-flex items-center gap-2">
-                <span
-                  class="h-3 w-3 rounded-sm bg-[#0084c7]"
-                  aria-hidden="true"
-                ></span>
-                Available booth
-              </span>
-              <span class="inline-flex items-center gap-2">
-                <span
-                  class="h-3 w-3 rounded-sm bg-[#facc15] ring-2 ring-white"
-                  aria-hidden="true"
-                ></span>
-                Selected booth
-              </span>
-            </div>
+     <!-- FLOOR PLAN / AI SHOWCASE SECTION -->
+<section id="floor-plan" class="bg-[#0b0c2a] px-4 py-16 sm:px-6">
+  <div class="mx-auto max-w-7xl">
+    <!-- Header & Legend -->
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-white">AI Showcase</h2>
+      <p class="mt-2 text-sm text-[#8f94c2]">
+        Check out the exhibit floor plan below. Select a booth for more details about the exhibitor!
+      </p>
+      <div class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#8f94c2]" aria-label="Floor plan legend">
+        <span class="inline-flex items-center gap-2">
+          <span class="h-3 w-3 rounded-sm bg-[#0084c7]" aria-hidden="true"></span>
+          Available booth
+        </span>
+        <span class="inline-flex items-center gap-2">
+          <span class="h-3 w-3 rounded-sm bg-[#facc15] ring-2 ring-white" aria-hidden="true"></span>
+          Selected booth
+        </span>
+      </div>
+    </div>
+
+    <!-- Floor Plan & Info Panel Grid -->
+    <div class="grid items-start gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(18rem,0.9fr)]">
+      <!-- Map Container -->
+      <div class="overflow-hidden rounded-2xl bg-white p-2 shadow-xl sm:p-3">
+        <div id="map-viewport" class="relative w-full overflow-hidden rounded-lg touch-none" style="aspect-ratio: 1683 / 1627;">
+          <div id="map-content" class="absolute inset-0 origin-center transition-transform duration-150">
+            <img src="floorplan3-cropped.png" alt="AICAPB exhibitor floor plan with booths B01 to B12" class="absolute inset-0 h-full w-full object-contain" onError="this.src='public/floorplan3-cropped.png'">
+            
+            <!-- Left Side Booths -->
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 4.5%; top: 37.5%;" data-booth="B01">B01</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 4.5%; top: 43.7%;" data-booth="B02">B02</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 4.5%; top: 49.9%;" data-booth="B03">B03</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 4.5%; top: 56.1%;" data-booth="B04">B04</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 4.5%; top: 62.3%;" data-booth="B05">B05</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 4.5%; top: 68.5%;" data-booth="B06">B06</button>
+
+            <!-- Right Side Booths -->
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 95.5%; top: 37.5%;" data-booth="B07">B07</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 95.5%; top: 43.7%;" data-booth="B08">B08</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 95.5%; top: 49.9%;" data-booth="B09">B09</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 95.5%; top: 56.1%;" data-booth="B10">B10</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 95.5%; top: 62.3%;" data-booth="B11">B11</button>
+            <button type="button" class="booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]" style="left: 95.5%; top: 68.5%;" data-booth="B12">B12</button>
           </div>
 
-          <div
-            class="grid items-start gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(18rem,0.9fr)]"
-          >
-            <div
-              class="overflow-hidden rounded-2xl bg-white p-2 shadow-xl sm:p-3"
-            >
-              <div
-                id="map-viewport"
-                class="relative w-full overflow-hidden rounded-lg touch-none"
-                style="aspect-ratio: 1195 / 1240"
-              >
-                <div
-                  id="map-content"
-                  class="absolute inset-0 origin-center transition-transform duration-150"
-                >
-                  <img
-                    src="assets/floorplan2-cropped.png"
-                    alt="AICAPB exhibitor floor plan"
-                    class="absolute inset-0 h-full w-full object-contain"
-                    onError="this.src='public/floorplan2-cropped.png'"
-                  />
-
-                  <button
-                    class="booth selected absolute"
-                    style="left: 11%; top: 35.5%"
-                    data-booth="B01"
-                  >
-                    B01
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 11%; top: 41.1%"
-                    data-booth="B02"
-                  >
-                    B02
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 11%; top: 46.7%"
-                    data-booth="B03"
-                  >
-                    B03
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 11%; top: 52.3%"
-                    data-booth="B04"
-                  >
-                    B04
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 11%; top: 57.9%"
-                    data-booth="B05"
-                  >
-                    B05
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 11%; top: 63.5%"
-                    data-booth="B06"
-                  >
-                    B06
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 11%; top: 69.1%"
-                    data-booth="B07"
-                  >
-                    B07
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 11%; top: 74.7%"
-                    data-booth="B08"
-                  >
-                    B08
-                  </button>
-
-                  <button
-                    class="booth absolute"
-                    style="left: 95.3%; top: 35.5%"
-                    data-booth="B09"
-                  >
-                    B09
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 95.3%; top: 41.1%"
-                    data-booth="B10"
-                  >
-                    B10
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 95.3%; top: 46.7%"
-                    data-booth="B11"
-                  >
-                    B11
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 95.3%; top: 52.3%"
-                    data-booth="B12"
-                  >
-                    B12
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 95.3%; top: 57.9%"
-                    data-booth="B13"
-                  >
-                    B13
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 95.3%; top: 63.5%"
-                    data-booth="B14"
-                  >
-                    B14
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 95.3%; top: 69.1%"
-                    data-booth="B15"
-                  >
-                    B15
-                  </button>
-                  <button
-                    class="booth absolute"
-                    style="left: 95.3%; top: 74.7%"
-                    data-booth="B16"
-                  >
-                    B16
-                  </button>
-                </div>
-
-                <div
-                  class="absolute right-3 top-3 z-40 flex items-center gap-1 rounded-xl border border-slate-200 bg-white/95 p-1 text-slate-700 shadow-md"
-                >
-                  <button
-                    id="zoom-out"
-                    class="rounded-lg p-2 hover:bg-slate-100"
-                    aria-label="Zoom out"
-                  >
-                    −
-                  </button>
-                  <span
-                    id="zoom-label"
-                    class="min-w-12 text-center text-xs font-bold"
-                    >100%</span
-                  >
-                  <button
-                    id="zoom-in"
-                    class="rounded-lg p-2 hover:bg-slate-100"
-                    aria-label="Zoom in"
-                  >
-                    +
-                  </button>
-                  <button
-                    id="zoom-reset"
-                    class="rounded-lg p-2 hover:bg-slate-100"
-                    aria-label="Reset zoom"
-                  >
-                    ↻
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <aside
-              class="min-h-64 overflow-hidden rounded-2xl border border-[#282b68] shadow-2xl sm:min-h-72"
-            >
-              <div class="bg-white text-slate-800">
-                <div class="bg-[#003d68] p-5 text-white sm:p-6">
-                  <p
-                    id="booth-number"
-                    class="text-xs font-semibold uppercase tracking-[.18em] text-[#38bdf8]"
-                  >
-                    BOOTH B01
-                  </p>
-                  <h3
-                    id="booth-name"
-                    class="mt-1 text-xl font-bold sm:text-2xl"
-                  >
-                    CivicAI
-                  </h3>
-                  <span
-                    id="booth-category"
-                    class="mt-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs"
-                    >Public-service AI</span
-                  >
-                </div>
-                <div class="p-5 sm:p-6">
-                  <p
-                    id="booth-description"
-                    class="text-xs leading-relaxed text-slate-600 sm:text-sm"
-                  >
-                    Explore a conversational AI assistant that helps people find
-                    clear, accessible information about public services.
-                  </p>
-                  <div
-                    class="mt-4 rounded-xl bg-[#f0f7ff] p-4 text-[#003d68] sm:mt-6"
-                  >
-                    <p
-                      class="text-[10px] font-bold uppercase tracking-wider sm:text-xs"
-                    >
-                      ✦ Featured demonstration
-                    </p>
-                    <p
-                      id="booth-demo"
-                      class="mt-1.5 text-xs leading-relaxed text-slate-700 sm:mt-2"
-                    >
-                      A live question-and-answer demo using sample
-                      government-service information.
-                    </p>
-                  </div>
-                  <p
-                    class="mt-4 text-[10px] text-slate-400 sm:mt-6 sm:text-[11px]"
-                  >
-                    Sample exhibitor profile — details can be replaced with
-                    confirmed exhibitor information.
-                  </p>
-                </div>
-              </div>
-            </aside>
+          <!-- Zoom Controls -->
+          <div class="absolute right-3 top-3 z-30 flex items-center gap-1 rounded-xl border border-slate-200 bg-white/95 p-1 shadow-md">
+            <button id="zoom-out" type="button" aria-label="Zoom out on floor plan" class="rounded-lg p-2 text-slate-700 transition hover:bg-slate-100 disabled:opacity-40">−</button>
+            <span id="zoom-label" class="min-w-12 text-center text-xs font-bold text-slate-700">100%</span>
+            <button id="zoom-in" type="button" aria-label="Zoom in on floor plan" class="rounded-lg p-2 text-slate-700 transition hover:bg-slate-100 disabled:opacity-40">+</button>
+            <button id="zoom-reset" type="button" aria-label="Reset floor plan zoom" class="rounded-lg p-2 text-slate-700 transition hover:bg-slate-100">↻</button>
           </div>
         </div>
-      </section>
+      </div>
+
+      <!-- Details Sidebar -->
+      <aside aria-live="polite" class="min-h-72 overflow-hidden rounded-2xl border border-[#282b68] shadow-2xl">
+        <!-- Selected Booth Info View (Hidden by default until clicked) -->
+        <div id="booth-details-view" class="hidden overflow-hidden bg-white">
+          <div class="bg-[#003d68] p-6 text-white">
+            <p id="booth-number" class="text-xs font-semibold uppercase tracking-[0.18em] text-[#38bdf8]">Booth B01</p>
+            <h3 id="booth-name" class="mt-1 text-2xl font-bold">To be determined</h3>
+            <div class="mt-3">
+              <span id="booth-category" class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white">To be determined</span>
+            </div>
+          </div>
+          <div class="p-6 text-slate-800">
+            <p id="booth-description" class="text-sm leading-relaxed text-slate-600">To be determined</p>
+          </div>
+        </div>
+
+        <!-- Default Empty State View -->
+        <div id="booth-empty-view" class="flex min-h-72 flex-col items-center justify-center bg-[#131538] p-8 text-center text-white">
+          <div class="flex h-16 w-16 items-center justify-center rounded-full bg-[#0084c7]/10 text-[#38bdf8]">
+            <svg class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="mt-6 text-2xl font-bold text-white">Select a booth</h3>
+          <p class="mt-3 max-w-xs text-sm leading-relaxed text-[#8f94c2]">
+            Tap a booth on the floor plan to see its details. Exhibitor information is to be determined.
+          </p>
+          <p class="mt-8 flex items-center gap-2 text-xs text-[#8f94c2]">
+            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Exhibitor list to be announced
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPT TO REPLACE AT THE BOTTOM OF INDEX.HTML -->
+<script>
+ (function() {
+  const BOOTHS = {
+    B01: { number: "Booth B01", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B02: { number: "Booth B02", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B03: { number: "Booth B03", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B04: { number: "Booth B04", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B05: { number: "Booth B05", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B06: { number: "Booth B06", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B07: { number: "Booth B07", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B08: { number: "Booth B08", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B09: { number: "Booth B09", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B10: { number: "Booth B10", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B11: { number: "Booth B11", name: "To be determined", category: "To be determined", description: "To be determined" },
+    B12: { number: "Booth B12", name: "To be determined", category: "To be determined", description: "To be determined" }
+  };
+
+  const mapViewport = document.getElementById('map-viewport');
+  const mapContent = document.getElementById('map-content');
+  const zoomLabel = document.getElementById('zoom-label');
+  const zoomInBtn = document.getElementById('zoom-in');
+  const zoomOutBtn = document.getElementById('zoom-out');
+  const detailsView = document.getElementById('booth-details-view');
+  const emptyView = document.getElementById('booth-empty-view');
+
+  let zoom = 1, panX = 0, panY = 0, drag = null;
+
+  function renderMap() {
+    mapContent.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
+    zoomLabel.textContent = `${Math.round(zoom * 100)}%`;
+    zoomOutBtn.disabled = zoom <= 1;
+    zoomInBtn.disabled = zoom >= 2.2;
+  }
+
+  function setZoom(amount) {
+    zoom = Math.max(1, Math.min(2.2, zoom + amount));
+    if (zoom === 1) { panX = 0; panY = 0; }
+    renderMap();
+  }
+
+  document.getElementById('zoom-in').addEventListener('click', () => setZoom(0.2));
+  document.getElementById('zoom-out').addEventListener('click', () => setZoom(-0.2));
+  document.getElementById('zoom-reset').addEventListener('click', () => { zoom = 1; panX = 0; panY = 0; renderMap(); });
+
+  document.querySelectorAll('.booth').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.booth').forEach(b => {
+        b.className = "booth absolute z-20 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-bold text-white shadow-md transition-all duration-200 bg-[#0084c7] hover:scale-105 hover:bg-[#38bdf8]";
+      });
+      button.className = "booth absolute z-30 flex h-[3.8%] w-[4.8%] min-w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-md text-center text-[clamp(0.55rem,0.75vw,0.8rem)] font-black text-slate-950 shadow-md transition-all duration-200 bg-[#facc15] ring-4 ring-[#facc15]/40 scale-110";
+
+      const info = BOOTHS[button.dataset.booth];
+      if (info) {
+        document.getElementById('booth-number').textContent = info.number;
+        document.getElementById('booth-name').textContent = info.name;
+        document.getElementById('booth-category').textContent = info.category;
+        document.getElementById('booth-description').textContent = info.description;
+        emptyView.classList.add('hidden');
+        detailsView.classList.remove('hidden');
+      }
+    });
+  });
+
+  mapViewport.addEventListener('pointerdown', event => {
+    if (zoom <= 1 || event.target.closest('button')) return;
+    drag = { x: event.clientX, y: event.clientY, panX, panY };
+    mapViewport.setPointerCapture(event.pointerId);
+  });
+
+  mapViewport.addEventListener('pointermove', event => {
+    if (!drag) return;
+    const limitX = mapViewport.clientWidth * (zoom - 1) / 2;
+    const limitY = mapViewport.clientHeight * (zoom - 1) / 2;
+    panX = Math.max(-limitX, Math.min(limitX, drag.panX + event.clientX - drag.x));
+    panY = Math.max(-limitY, Math.min(limitY, drag.panY + event.clientY - drag.y));
+    renderMap();
+  });
+
+  ['pointerup', 'pointercancel'].forEach(type => mapViewport.addEventListener(type, () => { drag = null; }));
+})();
+</script>
 
        <!-- WHO SHOULD ATTEND SECTION -->
       <section class="bg-[#252585] px-4 py-12 text-white sm:px-6 sm:py-20">
@@ -2348,104 +2261,7 @@
         })();
       })();
 
-      const boothInfo = {
-        B01: [
-          "CivicAI",
-          "Public-service AI",
-          "Explore a conversational AI assistant that helps people find clear, accessible information about public services.",
-          "A live question-and-answer demo using sample government-service information.",
-        ],
-        B02: [
-          "AgriSense",
-          "AI for agriculture",
-          "See how computer vision and local data can help farmers monitor crops and identify potential issues earlier.",
-          "Crop image analysis and a sample farm monitoring dashboard.",
-        ],
-        B03: [
-          "HealthLens",
-          "AI for health",
-          "Discover responsible AI concepts for organizing health information and supporting better-informed care teams.",
-          "A privacy-conscious example of AI-assisted health data review.",
-        ],
-        B04: [
-          "Resilient PH",
-          "Disaster resilience",
-          "Explore how data visualization can help communities understand hazards and prepare for emergencies.",
-          "An interactive sample risk map with preparedness information.",
-        ],
-        B05: [
-          "GovData Lab",
-          "Data interoperability",
-          "Learn how connected, well-governed data can support collaboration and evidence-based decisions across agencies.",
-          "A sample dashboard combining insights from multiple datasets.",
-        ],
-        B06: [
-          "RoboWorks",
-          "Robotics and automation",
-          "Meet practical robotics and automation concepts designed to support people and improve everyday operations.",
-          "A small-scale automation workflow and interactive robotics showcase.",
-        ],
-        B07: [
-          "VisionForge",
-          "Computer vision",
-          "See how computer vision can help teams identify patterns in images and video for practical local applications.",
-          "A sample object-detection demo using a curated set of images.",
-        ],
-        B08: [
-          "LanguageWorks",
-          "Language technology",
-          "Explore AI tools for working with documents and supporting access to information in local contexts.",
-          "A sample document summarization and multilingual search experience.",
-        ],
-        B09: [
-          "CyberShield",
-          "Cybersecurity",
-          "Learn about AI-assisted approaches to identifying unusual activity and strengthening cyber resilience.",
-          "A simulated security dashboard highlighting sample network alerts.",
-        ],
-        B10: [
-          "DataBridge",
-          "Data interoperability",
-          "Discover ways to connect information systems while supporting responsible data governance.",
-          "A visual walkthrough of a sample data-sharing workflow.",
-        ],
-        B11: [
-          "ClimateIQ",
-          "Climate intelligence",
-          "Explore how data analysis can help communities understand environmental trends and climate risks.",
-          "An interactive sample climate and local-impact visualization.",
-        ],
-        B12: [
-          "LearnAI",
-          "Education technology",
-          "See how adaptive learning concepts can support educators and create more personalized learning experiences.",
-          "A sample learning assistant that recommends practice activities.",
-        ],
-        B13: [
-          "FinSight",
-          "Analytics and insights",
-          "Explore data analytics concepts for understanding trends and supporting evidence-based planning.",
-          "A sample interactive dashboard with explainable data insights.",
-        ],
-        B14: [
-          "AssistiveTech PH",
-          "Accessibility technology",
-          "Discover inclusive technology ideas that can make digital information and services easier to access.",
-          "A hands-on showcase of assistive interfaces and accessibility tools.",
-        ],
-        B15: [
-          "SmartGrid Lab",
-          "Smart infrastructure",
-          "Learn how connected sensors and AI can support more efficient infrastructure monitoring.",
-          "A sample sensor-data visualization for infrastructure operations.",
-        ],
-        B16: [
-          "Innovation Hub",
-          "Emerging technology",
-          "Explore early-stage ideas and collaborative prototypes addressing local technology challenges.",
-          "A rotating showcase of sample AI and emerging-technology prototypes.",
-        ],
-      };
+     
 
       const mapViewport = document.getElementById("map-viewport");
       const mapContent = document.getElementById("map-content");
