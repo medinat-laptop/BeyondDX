@@ -63,6 +63,9 @@
     .rise { animation: hero-rise .9s cubic-bezier(.22,.8,.22,1) both; }
     @keyframes hero-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
+    .booth { transform: translate(-50%, -50%); height: 3.8%; width: 4.8%; min-width: 24px; display: flex; align-items: center; justify-content: center; border-radius: .375rem; background: #0084c7; color: white; font-weight: 700; font-size: clamp(.55rem, .75vw, .8rem); box-shadow: 0 4px 8px #0003; }
+    .booth.selected { background: #facc15; color: #0f172a; outline: 4px solid #facc1566; z-index: 30; transform: translate(-50%, -50%) scale(1.1); font-weight: 900; }
+
     @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; } }
   </style>
 </head>
@@ -78,6 +81,7 @@
         <a href="#about-aicapb" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">About</a>
         <a href="#program-highlights" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Program</a>
         <a href="#speakers" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Speakers</a>
+        <a href="#floor-plan" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Showcase</a>
         <a href="#venue" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Venue</a>
       </nav>
       <a href="#register" class="rounded-full bg-white px-5 py-2 text-sm font-bold text-[#1a1a64] shadow-md transition hover:bg-white/90">Register Now</a>
@@ -87,7 +91,6 @@
   <main>
     <!-- HERO SECTION -->
     <section id="top" class="hero relative isolate flex min-h-screen items-center overflow-hidden bg-[#0a0d2e] text-white">
-      <!-- Animated SVG Background -->
       <div class="hero__bg" aria-hidden="true">
         <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" focusable="false">
           <defs>
@@ -177,6 +180,88 @@
       </div>
     </section>
 
+    <!-- EXPERIENCE CARDS SECTION (From DX to AX + Outcome Cards) -->
+    <section class="bg-[#0b0c2a] px-4 py-20 sm:px-6 sm:py-24">
+      <div class="mx-auto mb-24 max-w-6xl sm:mb-32">
+        <div class="mx-auto max-w-4xl text-center">
+          <h2 class="text-3xl font-bold text-white sm:text-4xl">From DX to AX</h2>
+          <p class="mx-auto mt-5 max-w-4xl text-base leading-relaxed text-[#9399cb] sm:text-lg">
+            Beyond DX is the next stage of government transformation, sometimes called AI transformation (AX). It is about more than new tools. It means change in:
+          </p>
+        </div>
+        
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">⚖ <span>Governance</span></div>
+          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">▣ <span>Infrastructure</span></div>
+          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">▤ <span>Procurement</span></div>
+          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">⚗ <span>Experimentation</span></div>
+          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">♧ <span>Workforce capabilities</span></div>
+          <div class="flex min-h-[88px] items-center gap-5 rounded-2xl border border-[#25287a] bg-[#161748] px-6 py-5 font-semibold">◇ <span>Leadership and institutional culture</span></div>
+        </div>
+      </div>
+
+      <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <div class="lg:sticky lg:top-28 lg:h-fit">
+          <p class="text-xs font-bold tracking-[0.25em] text-[#9399cb]">BEYOND DX FORUM</p>
+          <h2 class="mt-4 text-3xl font-bold leading-tight text-white sm:text-4xl">
+            Understand the shift.<br />
+            <span class="text-[#888dbd]">See it in action.</span>
+          </h2>
+          <p class="mt-5 max-w-md text-base leading-relaxed text-[#888dbd]">
+            Three outcomes from a half-day of perspectives, demonstrations, and conversation.
+          </p>
+          <div class="mt-8 hidden items-center gap-3 text-xs font-semibold tracking-[0.18em] text-[#888dbd] lg:flex">
+            <span class="h-px w-10 bg-[#505493]"></span>
+            KEEP SCROLLING
+          </div>
+        </div>
+
+        <div class="relative pb-[12vh]">
+          <article class="sticky mb-6 flex min-h-[54vh] flex-col justify-between overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#183b9b] to-[#245ac7] p-7 text-white shadow-2xl shadow-black/30 sm:p-10" style="top: 6rem; z-index: 1;">
+            <div class="flex items-start justify-between gap-4">
+              <span class="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[0.65rem] font-bold tracking-[0.2em]">UNDERSTAND THE SHIFT</span>
+              <span class="font-mono text-4xl font-light text-white/55">01</span>
+            </div>
+            <div class="max-w-xl py-10">
+              <h3 class="text-4xl font-bold leading-tight sm:text-5xl">Build a shared understanding</h3>
+              <p class="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
+                See how digital transformation and responsible AI integration can advance a more effective, responsive, and accountable government.
+              </p>
+            </div>
+            <p class="text-[0.65rem] font-bold tracking-[0.2em] text-white/65">FOUNDATIONS · ACCOUNTABILITY</p>
+          </article>
+
+          <article class="sticky mb-6 flex min-h-[54vh] flex-col justify-between overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#5634d7] to-[#7d4ce8] p-7 text-white shadow-2xl shadow-black/30 sm:p-10" style="top: 6.75rem; z-index: 2;">
+            <div class="flex items-start justify-between gap-4">
+              <span class="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[0.65rem] font-bold tracking-[0.2em]">SEE IT IN ACTION</span>
+              <span class="font-mono text-4xl font-light text-white/55">02</span>
+            </div>
+            <div class="max-w-xl py-10">
+              <h3 class="text-4xl font-bold leading-tight sm:text-5xl">Learn from real applications</h3>
+              <p class="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
+                Explore practical AI applications, implementation experiences, and lessons from government and selected partners.
+              </p>
+            </div>
+            <p class="text-[0.65rem] font-bold tracking-[0.2em] text-white/65">LIVE DEMOS · LESSONS LEARNED</p>
+          </article>
+
+          <article class="sticky mb-6 flex min-h-[54vh] flex-col justify-between overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br from-[#be185d] to-[#ec4899] p-7 text-white shadow-2xl shadow-black/30 sm:p-10" style="top: 7.5rem; z-index: 3;">
+            <div class="flex items-start justify-between gap-4">
+              <span class="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[0.65rem] font-bold tracking-[0.2em]">SHAPE WHAT’S NEXT</span>
+              <span class="font-mono text-4xl font-light text-white/55">03</span>
+            </div>
+            <div class="max-w-xl py-10">
+              <h3 class="text-4xl font-bold leading-tight sm:text-5xl">Take the next step together</h3>
+              <p class="mt-5 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
+                Share your insights on future priorities, practical next steps, and opportunities for collaboration toward responsible and sustained AI adoption.
+              </p>
+            </div>
+            <p class="text-[0.65rem] font-bold tracking-[0.2em] text-white/65">COLLABORATION · NEXT STEPS</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- PROGRAM HIGHLIGHTS -->
     <section id="program-highlights" class="bg-[#0b0c2a] px-4 py-16 sm:px-6">
       <div class="mx-auto max-w-4xl"><h2 class="text-center text-3xl font-bold sm:text-4xl">Program</h2><p class="mt-2 text-center text-base font-medium text-white/90">Thursday, 22 October 2026 <span class="mx-1 text-white/40">|</span> Conrad Manila</p><p class="mt-1 text-center text-xs text-[#a1a5d2]">Indicative program. Subject to change.</p>
@@ -211,6 +296,131 @@
       </div>
     </div></section>
 
+    <!-- WHO SHOULD ATTEND SECTION -->
+    <section class="bg-[#252585] px-4 py-16 text-white sm:px-6 sm:py-20">
+      <div class="mx-auto max-w-6xl">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Who should attend
+          </h2>
+          <p class="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-[#a1a5d2] sm:text-base">
+            The forum is designed for public-sector institutions and personnel who can influence, support, or implement AI adoption in government.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 text-white shadow-sm transition hover:border-white/40">
+            <svg class="h-7 w-7 shrink-0 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M3 10h18M5 10v11M9 10v11M13 10v11M17 10v11M12 3L2 10h20L12 3z"/></svg>
+            <span class="text-sm font-semibold leading-snug sm:text-base">National government executives and managers</span>
+          </div>
+
+          <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 text-white shadow-sm transition hover:border-white/40">
+            <svg class="h-7 w-7 shrink-0 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0V9a2 2 0 012-2h2a2 2 0 012 2v12m-6 0h6M9 7h.01M15 7h.01M9 11h.01M15 11h.01M9 15h.01M15 15h.01"/></svg>
+            <span class="text-sm font-semibold leading-snug sm:text-base">LGU executives and key personnel</span>
+          </div>
+
+          <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 text-white shadow-sm transition hover:border-white/40">
+            <svg class="h-7 w-7 shrink-0 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3a7 7 0 00-7 7c0 2.38 1.17 4.49 2.97 5.8a1 1 0 01.38.78V18a2 2 0 002 2h3.3a2 2 0 002-2v-1.42a1 1 0 01.38-.78C17.83 14.49 19 12.38 19 10a7 7 0 00-7-7z"/></svg>
+            <span class="text-sm font-semibold leading-snug sm:text-base">National Innovation Council member organizations</span>
+          </div>
+
+          <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 text-white shadow-sm transition hover:border-white/40">
+            <svg class="h-7 w-7 shrink-0 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span class="text-sm font-semibold leading-snug sm:text-base">Participants and partners of the AI CapB</span>
+          </div>
+
+          <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 text-white shadow-sm transition hover:border-white/40">
+            <svg class="h-7 w-7 shrink-0 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 10v6M2 10l10-5 10 5-10 5zM6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg>
+            <span class="text-sm font-semibold leading-snug sm:text-base">Academe, development partners, and technology organizations</span>
+          </div>
+
+          <div class="flex min-h-[92px] items-center gap-4 rounded-2xl border border-[#3e4288] bg-[#252585] px-6 py-5 text-white shadow-sm transition hover:border-white/40">
+            <svg class="h-7 w-7 shrink-0 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 8.41m5.96 5.96a14.926 14.926 0 01-5.96 2.03m9.72-9.72a3 3 0 11-4.24-4.24m4.24 4.24a3 3 0 00-4.24-4.24M4.5 12c-1.5 1.5-3 3-3 5.5s2.5 1.5 4 0c1.5-1.5 2.5-3 2.5-3M8 19c-1 1-2.5 2-4.5 2M10.5 4.5l3 3"/></svg>
+            <span class="text-sm font-semibold leading-snug sm:text-base">Innovation groups, including Filipinnovation finalists and startups</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOOR PLAN / AI SHOWCASE SECTION -->
+    <section id="floor-plan" class="bg-[#0b0c2a] px-4 py-16 sm:px-6">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold text-white">AI Showcase</h2>
+          <p class="mt-2 text-sm text-[#8f94c2]">
+            Check out the exhibit floor plan below. Select a booth for more details about the exhibitor!
+          </p>
+          <div class="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[#8f94c2]">
+            <span class="inline-flex items-center gap-2">
+              <span class="h-3 w-3 rounded-sm bg-[#0084c7]" aria-hidden="true"></span>
+              Available booth
+            </span>
+            <span class="inline-flex items-center gap-2">
+              <span class="h-3 w-3 rounded-sm bg-[#facc15] ring-2 ring-white" aria-hidden="true"></span>
+              Selected booth
+            </span>
+          </div>
+        </div>
+
+        <div class="grid items-start gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(18rem,0.9fr)]">
+          <!-- Floor Plan Map Container -->
+          <div class="overflow-hidden rounded-2xl bg-white p-2 shadow-xl sm:p-3">
+            <div id="map-viewport" class="relative w-full overflow-hidden rounded-lg touch-none" style="aspect-ratio: 1195 / 1240">
+              <div id="map-content" class="absolute inset-0 origin-center transition-transform duration-150">
+                <img src="assets/floorplan2-cropped.png" alt="AICAPB exhibitor floor plan" class="absolute inset-0 h-full w-full object-contain" onError="this.src='public/floorplan2-cropped.png'">
+                
+                <!-- Booth Buttons -->
+                <button class="booth selected absolute" style="left: 11%; top: 35.5%;" data-booth="B01">B01</button>
+                <button class="booth absolute" style="left: 11%; top: 41.1%;" data-booth="B02">B02</button>
+                <button class="booth absolute" style="left: 11%; top: 46.7%;" data-booth="B03">B03</button>
+                <button class="booth absolute" style="left: 11%; top: 52.3%;" data-booth="B04">B04</button>
+                <button class="booth absolute" style="left: 11%; top: 57.9%;" data-booth="B05">B05</button>
+                <button class="booth absolute" style="left: 11%; top: 63.5%;" data-booth="B06">B06</button>
+                <button class="booth absolute" style="left: 11%; top: 69.1%;" data-booth="B07">B07</button>
+                <button class="booth absolute" style="left: 11%; top: 74.7%;" data-booth="B08">B08</button>
+                
+                <button class="booth absolute" style="left: 95.3%; top: 35.5%;" data-booth="B09">B09</button>
+                <button class="booth absolute" style="left: 95.3%; top: 41.1%;" data-booth="B10">B10</button>
+                <button class="booth absolute" style="left: 95.3%; top: 46.7%;" data-booth="B11">B11</button>
+                <button class="booth absolute" style="left: 95.3%; top: 52.3%;" data-booth="B12">B12</button>
+                <button class="booth absolute" style="left: 95.3%; top: 57.9%;" data-booth="B13">B13</button>
+                <button class="booth absolute" style="left: 95.3%; top: 63.5%;" data-booth="B14">B14</button>
+                <button class="booth absolute" style="left: 95.3%; top: 69.1%;" data-booth="B15">B15</button>
+                <button class="booth absolute" style="left: 95.3%; top: 74.7%;" data-booth="B16">B16</button>
+              </div>
+
+              <!-- Map Controls -->
+              <div class="absolute right-3 top-3 z-40 flex items-center gap-1 rounded-xl border border-slate-200 bg-white/95 p-1 text-slate-700 shadow-md">
+                <button id="zoom-out" class="rounded-lg p-2 hover:bg-slate-100" aria-label="Zoom out">−</button>
+                <span id="zoom-label" class="min-w-12 text-center text-xs font-bold">100%</span>
+                <button id="zoom-in" class="rounded-lg p-2 hover:bg-slate-100" aria-label="Zoom in">+</button>
+                <button id="zoom-reset" class="rounded-lg p-2 hover:bg-slate-100" aria-label="Reset zoom">↻</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Booth Details Card Sidebar -->
+          <aside class="min-h-72 overflow-hidden rounded-2xl border border-[#282b68] shadow-2xl">
+            <div class="bg-white text-slate-800">
+              <div class="bg-[#003d68] p-6 text-white">
+                <p id="booth-number" class="text-xs font-semibold uppercase tracking-[.18em] text-[#38bdf8]">BOOTH B01</p>
+                <h3 id="booth-name" class="mt-1 text-2xl font-bold">CivicAI</h3>
+                <span id="booth-category" class="mt-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs">Public-service AI</span>
+              </div>
+              <div class="p-6">
+                <p id="booth-description" class="text-sm leading-relaxed text-slate-600">Explore a conversational AI assistant that helps people find clear, accessible information about public services.</p>
+                <div class="mt-6 rounded-xl bg-[#f0f7ff] p-4 text-[#003d68]">
+                  <p class="text-xs font-bold uppercase tracking-wider">✦ Featured demonstration</p>
+                  <p id="booth-demo" class="mt-2 text-xs leading-relaxed text-slate-700">A live question-and-answer demo using sample government-service information.</p>
+                </div>
+                <p class="mt-6 text-[11px] text-slate-400">Sample exhibitor profile — details can be replaced with confirmed exhibitor information.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <!-- VENUE AND REGISTER FORM -->
     <section id="register" class="bg-[#0b0c2a] px-4 py-16 text-white sm:px-6 sm:py-20"><div class="mx-auto max-w-3xl">
       <div id="venue" class="mb-20"><h2 class="mb-8 text-center text-3xl font-bold tracking-tight sm:text-4xl">Event Venue</h2><div class="grid items-center gap-8 rounded-2xl border border-[#282b68] bg-[#131538] p-6 sm:p-8 md:grid-cols-2"><div class="aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10 bg-[#0b0c2a]"><img src="assets/Conrad.png" alt="Conrad Manila Venue" class="h-full w-full object-cover" onError="this.src='public/Conrad.png'"></div><div class="flex flex-col justify-center"><h3 class="text-2xl font-bold sm:text-3xl">Conrad Manila</h3><div class="mt-4 space-y-3 text-sm text-[#a1a5d2]"><p>⌖ &nbsp;Seaside Boulevard corner Coral Way, Mall of Asia Complex, Pasay City 1300</p><p>▦ &nbsp;Thursday, 22 October 2026 | Registration opens 8:30 AM | Program 9:00 AM – 1:30 PM</p></div><div class="mt-6"><a href="https://maps.google.com/?q=Conrad+Manila" target="_blank" rel="noopener noreferrer" class="inline-flex rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-[#0b0c2a] shadow-md hover:bg-slate-100">Open in Google Maps ↗</a></div></div></div></div>
@@ -236,17 +446,109 @@
     </div></section>
   </main>
 
+  <!-- GOVPH STANDARD FOOTER -->
   <footer class="border-t border-white/10 bg-[#0b0c2a] text-white">
     <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-6">
+        
+        <!-- Coat of Arms Logo -->
+        <div class="flex items-start justify-center md:justify-start lg:col-span-1">
+          <img src="assets/RNP Logo transparent.png" alt="Republika ng Pilipinas Coat of Arms" class="h-28 w-auto object-contain opacity-90" onError="this.src='public/RNP Logo transparent.png'">
+        </div>
+
+        <!-- Government Links -->
+        <div class="space-y-3 lg:col-span-1">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-white">Government Links</h3>
+          <ul class="space-y-2 text-xs font-medium text-white/70">
+            <li><a href="https://op-proper.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">Office of the President</a></li>
+            <li><a href="https://ovp.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">Office of the Vice President</a></li>
+            <li><a href="https://senate.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">Senate of the Philippines</a></li>
+            <li><a href="https://www.house.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">House of Representatives</a></li>
+            <li><a href="https://sc.judiciary.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">Supreme Court</a></li>
+            <li><a href="https://ca.judiciary.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">Court of Appeals</a></li>
+            <li><a href="https://sb.judiciary.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">Sandiganbayan</a></li>
+          </ul>
+        </div>
+
+        <!-- Good Governance -->
+        <div class="space-y-3 lg:col-span-1">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-white">Good Governance</h3>
+          <ul class="space-y-2 text-xs font-medium text-white/70">
+            <li><a href="#transparency" class="transition hover:text-white">Transparency Seal</a></li>
+            <li><a href="#transparency-portal" class="transition hover:text-white">Transparency Portal</a></li>
+            <li><a href="https://www.foi.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">Freedom of Information</a></li>
+            <li><a href="https://whistleblowing.gcg.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">GCG Whistleblowing Portal</a></li>
+            <li><a href="#citizens-charter" class="transition hover:text-white">Citizen's Charter</a></li>
+            <li><a href="#client-satisfaction" class="transition hover:text-white">Client Satisfaction Measurement Survey</a></li>
+            <li><a href="#data-privacy-seal" class="transition hover:text-white">Data Privacy Seal</a></li>
+            <li><a href="#privacy-notice" class="transition hover:text-white">Privacy and Copyright Notice</a></li>
+          </ul>
+        </div>
+
+        <!-- About GOVPH -->
+        <div class="space-y-3 lg:col-span-1">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-white">About GOVPH</h3>
+          <p class="text-xs leading-relaxed text-white/70">
+            Learn more about the Philippine government, its structure, how government works and the people behind it.
+          </p>
+          <div class="pt-2">
+            <a href="https://www.gov.ph" target="_blank" rel="noreferrer" class="inline-block rounded-xl border border-red-500 bg-white/5 px-6 py-2 text-xs font-bold text-red-500 transition hover:bg-red-500 hover:text-white">
+              GOVPH
+            </a>
+          </div>
+          <div class="space-y-1 pt-2 text-xs font-medium text-white/70">
+            <p><a href="https://data.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">Open Data Portal</a></p>
+            <p><a href="https://www.officialgazette.gov.ph/" target="_blank" rel="noreferrer" class="transition hover:text-white">Official Gazette</a></p>
+          </div>
+        </div>
+
+        <!-- Republic of the Philippines -->
+        <div class="space-y-3 lg:col-span-1">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-white">Republic of the Philippines</h3>
+          <p class="text-xs leading-relaxed text-white/70">
+            All content is in the public domain unless otherwise stated.
+          </p>
+        </div>
+
+        <!-- Follow Us Icons -->
+        <div class="space-y-3 lg:col-span-1">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-white">Follow Us</h3>
+          <div class="grid w-fit grid-cols-2 gap-2">
+            <a href="https://www.facebook.com/dapcsf" target="_blank" rel="noreferrer" aria-label="Facebook" class="flex h-10 w-10 items-center justify-center rounded-full bg-[#131538] text-white transition hover:bg-[#0084c7]">
+              <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="flex h-10 w-10 items-center justify-center rounded-full bg-[#131538] text-white transition hover:bg-[#0084c7]">
+              <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.47 1.47 0 1 0 0 2.94 1.47 1.47 0 0 0 0-2.94z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" class="flex h-10 w-10 items-center justify-center rounded-full bg-[#131538] text-white transition hover:bg-[#0084c7]">
+              <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/centerforstrategicfutures/" target="_blank" rel="noreferrer" aria-label="Instagram" class="flex h-10 w-10 items-center justify-center rounded-full bg-[#131538] text-white transition hover:bg-[#0084c7]">
+              <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Separator Line -->
+      <div class="my-10 border-t border-white/10"></div>
+
+      <!-- DAP Event Branding & Copyright Section -->
       <div class="flex flex-col items-center gap-6 text-center">
         <img src="assets/dap-logo-white.png" alt="Development Academy of the Philippines" class="h-16 w-auto object-contain" onError="this.src='public/dap-logo-white.png'">
-        <p class="max-w-3xl text-xs leading-relaxed text-white/50">Beyond DX: AI Transformation Forum for the Philippine Public Sector is part of the National Capability-Building Program on AI of the Development Academy of the Philippines - Center for Strategic Futures.</p>
-        <p class="text-xs text-white/40">© 2026 Development Academy of the Philippines. All rights reserved.</p>
+        <p class="max-w-3xl text-center text-xs leading-relaxed text-white/50">
+          Beyond DX: AI Transformation Forum for the Philippine Public Sector is part of the National Capability-Building Program on AI of the Development Academy of the Philippines - Center for Strategic Futures.
+        </p>
+        <p class="text-center text-xs text-white/40">
+          &copy; 2026 Development Academy of the Philippines. All rights reserved.
+        </p>
       </div>
     </div>
   </footer>
 
   <script>
+    /* GOOGLE APPS SCRIPT FORM SUBMISSION */
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtfcAO7dOTzgxi-deXwLZ5CbijyCLUqJz14DOFLLu5W-h0IwfHG1AwU78E1fJVK_GU/exec';
     
     async function submitRegistration(event) {
@@ -299,6 +601,76 @@
         requestAnimationFrame(tick);
       })();
     })();
+
+    /* FLOOR PLAN MAP & BOOTH DATA INTERACTION */
+    const boothInfo = {
+      B01: ['CivicAI', 'Public-service AI', 'Explore a conversational AI assistant that helps people find clear, accessible information about public services.', 'A live question-and-answer demo using sample government-service information.'],
+      B02: ['AgriSense', 'AI for agriculture', 'See how computer vision and local data can help farmers monitor crops and identify potential issues earlier.', 'Crop image analysis and a sample farm monitoring dashboard.'],
+      B03: ['HealthLens', 'AI for health', 'Discover responsible AI concepts for organizing health information and supporting better-informed care teams.', 'A privacy-conscious example of AI-assisted health data review.'],
+      B04: ['Resilient PH', 'Disaster resilience', 'Explore how data visualization can help communities understand hazards and prepare for emergencies.', 'An interactive sample risk map with preparedness information.'],
+      B05: ['GovData Lab', 'Data interoperability', 'Learn how connected, well-governed data can support collaboration and evidence-based decisions across agencies.', 'A sample dashboard combining insights from multiple datasets.'],
+      B06: ['RoboWorks', 'Robotics and automation', 'Meet practical robotics and automation concepts designed to support people and improve everyday operations.', 'A small-scale automation workflow and interactive robotics showcase.'],
+      B07: ['VisionForge', 'Computer vision', 'See how computer vision can help teams identify patterns in images and video for practical local applications.', 'A sample object-detection demo using a curated set of images.'],
+      B08: ['LanguageWorks', 'Language technology', 'Explore AI tools for working with documents and supporting access to information in local contexts.', 'A sample document summarization and multilingual search experience.'],
+      B09: ['CyberShield', 'Cybersecurity', 'Learn about AI-assisted approaches to identifying unusual activity and strengthening cyber resilience.', 'A simulated security dashboard highlighting sample network alerts.'],
+      B10: ['DataBridge', 'Data interoperability', 'Discover ways to connect information systems while supporting responsible data governance.', 'A visual walkthrough of a sample data-sharing workflow.'],
+      B11: ['ClimateIQ', 'Climate intelligence', 'Explore how data analysis can help communities understand environmental trends and climate risks.', 'An interactive sample climate and local-impact visualization.'],
+      B12: ['LearnAI', 'Education technology', 'See how adaptive learning concepts can support educators and create more personalized learning experiences.', 'A sample learning assistant that recommends practice activities.'],
+      B13: ['FinSight', 'Analytics and insights', 'Explore data analytics concepts for understanding trends and supporting evidence-based planning.', 'A sample interactive dashboard with explainable data insights.'],
+      B14: ['AssistiveTech PH', 'Accessibility technology', 'Discover inclusive technology ideas that can make digital information and services easier to access.', 'A hands-on showcase of assistive interfaces and accessibility tools.'],
+      B15: ['SmartGrid Lab', 'Smart infrastructure', 'Learn how connected sensors and AI can support more efficient infrastructure monitoring.', 'A sample sensor-data visualization for infrastructure operations.'],
+      B16: ['Innovation Hub', 'Emerging technology', 'Explore early-stage ideas and collaborative prototypes addressing local technology challenges.', 'A rotating showcase of sample AI and emerging-technology prototypes.']
+    };
+
+    const mapViewport = document.getElementById('map-viewport');
+    const mapContent = document.getElementById('map-content');
+    const zoomLabel = document.getElementById('zoom-label');
+    let zoom = 1, panX = 0, panY = 0, drag = null;
+
+    function renderMap() {
+      mapContent.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
+      zoomLabel.textContent = `${Math.round(zoom * 100)}%`;
+    }
+
+    function setZoom(amount) {
+      zoom = Math.max(1, Math.min(2.2, zoom + amount));
+      if (zoom === 1) { panX = 0; panY = 0; }
+      renderMap();
+    }
+
+    document.getElementById('zoom-in').addEventListener('click', () => setZoom(0.2));
+    document.getElementById('zoom-out').addEventListener('click', () => setZoom(-0.2));
+    document.getElementById('zoom-reset').addEventListener('click', () => { zoom = 1; panX = 0; panY = 0; renderMap(); });
+
+    document.querySelectorAll('.booth').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelector('.booth.selected')?.classList.remove('selected');
+        button.classList.add('selected');
+        const [name, category, description, demo] = boothInfo[button.dataset.booth];
+        document.getElementById('booth-number').textContent = `BOOTH ${button.dataset.booth}`;
+        document.getElementById('booth-name').textContent = name;
+        document.getElementById('booth-category').textContent = category;
+        document.getElementById('booth-description').textContent = description;
+        document.getElementById('booth-demo').textContent = demo;
+      });
+    });
+
+    mapViewport.addEventListener('pointerdown', event => {
+      if (zoom <= 1 || event.target.closest('button')) return;
+      drag = { x: event.clientX, y: event.clientY, panX, panY };
+      mapViewport.setPointerCapture(event.pointerId);
+    });
+
+    mapViewport.addEventListener('pointermove', event => {
+      if (!drag) return;
+      const limitX = mapViewport.clientWidth * (zoom - 1) / 2;
+      const limitY = mapViewport.clientHeight * (zoom - 1) / 2;
+      panX = Math.max(-limitX, Math.min(limitX, drag.panX + event.clientX - drag.x));
+      panY = Math.max(-limitY, Math.min(limitY, drag.panY + event.clientY - drag.y));
+      renderMap();
+    });
+
+    ['pointerup', 'pointercancel'].forEach(type => mapViewport.addEventListener(type, () => { drag = null; }));
   </script>
 </body>
 </html>
