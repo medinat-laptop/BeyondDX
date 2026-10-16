@@ -420,13 +420,31 @@
       />
     </a>
 
-    <!-- Centered Nav Links -->
+    <!-- Desktop Nav Links (Visible on PC/Desktop, Hidden on Mobile) -->
     <nav class="mx-auto hidden items-center gap-7 lg:flex" aria-label="Main navigation">
       <a href="#about-aicapb" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">About</a>
       <a href="#program-highlights" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Program</a>
       <a href="#speakers" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Speakers</a>
       <a href="#floor-plan" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Showcase</a>
       <a href="#venue" class="bg-gradient-to-r from-pink-400 via-rose-400 to-fuchsia-400 bg-clip-text text-sm font-bold text-transparent hover:brightness-125">Venue</a>
+    </nav>
+
+    <!-- Mobile Burger Button (Hidden on PC/Desktop with lg:hidden, Visible on Mobile) -->
+    <button id="mobile-menu-btn" type="button" class="rounded-lg p-2 text-white hover:bg-white/10 focus:outline-none lg:hidden" aria-label="Toggle Navigation Menu">
+      <svg class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Dropdown Menu (Hidden on PC/Desktop with lg:hidden) -->
+  <div id="mobile-menu" class="hidden border-t border-white/10 bg-[#151a5e] px-6 py-4 lg:hidden">
+    <nav class="flex flex-col space-y-3">
+      <a href="#about-aicapb" class="mobile-nav-link text-sm font-bold text-pink-300 hover:text-white">About</a>
+      <a href="#program-highlights" class="mobile-nav-link text-sm font-bold text-pink-300 hover:text-white">Program</a>
+      <a href="#speakers" class="mobile-nav-link text-sm font-bold text-pink-300 hover:text-white">Speakers</a>
+      <a href="#floor-plan" class="mobile-nav-link text-sm font-bold text-pink-300 hover:text-white">Showcase</a>
+      <a href="#venue" class="mobile-nav-link text-sm font-bold text-pink-300 hover:text-white">Venue</a>
     </nav>
   </div>
 </header>
@@ -532,11 +550,6 @@
         <div class="hero__shade" aria-hidden="true"></div>
 
         <div class="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:py-20">
-          <p
-            class="rise max-w-[14rem] text-xs font-semibold uppercase leading-tight tracking-[.18em] text-white/80"
-          >
-            National Capability-Building Program on AI
-          </p>
           <div
             class="mt-8 grid items-center gap-8 md:mt-10 md:grid-cols-[minmax(0,22rem)_1px_1fr] md:gap-12"
           >
@@ -643,7 +656,7 @@
         class="bg-[#252585] px-4 py-12 sm:px-6 sm:py-16"
       >
         <div class="mx-auto max-w-6xl">
-          <h2 class="text-center text-2xl font-bold sm:text-3xl">About</h2>
+          <h2 class="text-center text-2xl font-bold sm:text-3xl">About the Forum</h2>
           <div
             class="mt-8 grid items-center gap-8 sm:mt-10 lg:grid-cols-2 lg:gap-10"
           >
@@ -651,31 +664,28 @@
               class="space-y-4 text-sm leading-relaxed text-white/80 sm:space-y-6 sm:text-base"
             >
               <p>
-                Artificial intelligence is changing how organizations work, make
-                decisions, and deliver services. For government, this means
-                moving beyond digital transformation (DX) to ask how AI can make
-                public services more responsive, decisions better informed, and
-                operations more efficient.
+                Artificial intelligence (AI) is changing how organizations work, make 
+                decisions, and deliver services. For government, this means 
+                moving beyond digital transformation (DX) and exploring how AI 
+                can enable more responsive public services, 
+                better-informed decisions, and more efficient operations. 
+
               </p>
               <p>
                 <strong class="text-white">Beyond DX</strong> is a
-                forward-looking vision of government. It builds on digital
-                transformation and brings AI into services, workflows, and
-                decision-making responsibly. It invites agencies to anticipate
-                what is coming, decide what kind of government they want to
-                become, and take practical steps from wherever they are
-                starting.
+                 forward-looking forum on responsible AI transformation in the 
+                Philippine public sector. Building on the foundations of digital transformation, 
+                the event examines how the government can responsibly integrate AI into public services, 
+                workflows, and decision-making to create greater public value.
               </p>
               <p>
-                The forum is part of the
-                <strong class="text-white"
-                  >Development Academy of the Philippines’ National
-                  Capability-Building Program on AI (AI CapB)</strong
-                >. Through video perspectives, live demonstrations, audience
-                interaction, and a curated showcase, it connects public-sector
-                capabilities with real applications, real institutional
-                experiences, and emerging approaches to sustained AI
-                transformation.
+                As part of the Development Academy of the Philippines’
+                <strong class="text-white"  
+                  > National Capability-Building Program on AI (AI CapB)</strong>.
+                   the forum connects government leaders, innovators, and partners 
+                   through video perspectives, live demonstrations, audience interaction, 
+                   and a curated showcase of applications and emerging approaches for sustained AI 
+                   transformation.
               </p>
             </div>
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
@@ -710,7 +720,7 @@
         <div class="mx-auto mb-16 max-w-6xl sm:mb-24 lg:mb-32">
           <div class="mx-auto max-w-4xl text-center">
             <h2 class="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
-              From DX to AX
+              How do we move Beyond DX?
             </h2>
             <p
               class="mx-auto mt-3 max-w-4xl text-sm leading-relaxed text-[#9399cb] sm:mt-5 sm:text-base lg:text-lg"
@@ -879,8 +889,9 @@
             <p
               class="mt-3 max-w-md text-sm leading-relaxed text-[#888dbd] sm:mt-5 sm:text-base"
             >
-              Three outcomes from a half-day of perspectives, demonstrations,
-              and conversation.
+              What can you expect from a half-day of perspectives,
+               demonstrations, and conversation? 
+
             </p>
             <div
               class="mt-8 hidden items-center gap-3 text-xs font-semibold tracking-[0.18em] text-[#888dbd] lg:flex"
@@ -944,7 +955,7 @@
                 <h3
                   class="text-2xl font-bold leading-tight sm:text-4xl lg:text-5xl"
                 >
-                  Learn from real applications
+                  Witness AI solutions
                 </h3>
                 <p
                   class="mt-3 max-w-lg text-sm leading-relaxed text-white/85 sm:mt-5 sm:text-base lg:text-lg"
@@ -1011,7 +1022,7 @@
             class="mt-2 text-center text-sm font-medium text-white/90 sm:text-base"
           >
             Thursday, 22 October 2026
-            <span class="mx-1 text-white/40">|</span> Conrad Manila
+            <span class="mx-1 text-white/40">|</span> Forbes 2 and 3 Ballrooms, Conrad Manila
           </p>
           <p class="mt-1 text-center text-[10px] text-[#a1a5d2] sm:text-xs">
             Indicative program. Subject to change.
@@ -1040,9 +1051,8 @@
                   <td class="px-4 py-3 sm:px-6 sm:py-4">
                     <strong>Prayer and National Anthem</strong>
                     <p
-                      class="mt-1 whitespace-pre-line text-[10px] text-[#8f94c2] sm:text-xs"
-                    >
-                      DAP Choir
+                      class="mt-0.5 text-[10px] text-[#8f94c2] sm:text-xs">
+                   DAP Choir
                     </p>
                   </td>
                 </tr>
@@ -1057,8 +1067,8 @@
                     <p
                       class="mt-1 whitespace-pre-line text-[10px] text-[#8f94c2] sm:text-xs"
                     >
-                      Leocadio S. Sebastian, PhD, CESO I<br />Acting President
-                      and CEO<br />Development Academy of the Philippines
+                      Leocadio S. Sebastian, PhD, CESO I<br />Acting President and CEO
+                      Development Academy of the Philippines
                     </p>
                   </td>
                 </tr>
@@ -1111,7 +1121,7 @@
                     9:40 – 9:50 AM
                   </td>
                   <td class="px-4 py-3 sm:px-6 sm:py-4">
-                    <strong>Beyond DX Perspectives (Video)</strong>
+                    <strong>Beyond DX Perspectives</strong>
                     <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
                       DEPDev: Governing the Shift · DICT: Powering AI
                       Transformation
@@ -1126,12 +1136,23 @@
                   </td>
                   <td class="px-4 py-3 sm:px-6 sm:py-4">
                     <strong
-                      >AI in Action: Government Solutions (Stage Demo, 7 minutes
-                      each)</strong
-                    >
+                      >AI in Action: Live Demo of Government Solutions  (Stage Demo, 7 minutes each)</strong>
                     <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
-                      DBM: to be announced · ARTA: TALA · DOST-ASTI: to be
-                      announced · Quezon City Government: LyfSaver PH
+                      Stay tuned for the full roster of solutions!
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="whitespace-nowrap px-4 py-3 align-top text-[#8f94c2] sm:px-6 sm:py-4"
+                  >
+                    10:20 – 10:25 AM
+                  </td>
+                  <td class="px-4 py-3 sm:px-6 sm:py-4">
+                    <strong
+                      >Ask the Implementers</strong>
+                    <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
+                      Audience pulse and live questions to the teams behind the solutions.
                     </p>
                   </td>
                 </tr>
@@ -1153,7 +1174,7 @@
                     10:25 – 10:35 AM
                   </td>
                   <td class="px-4 py-3 sm:px-6 sm:py-4">
-                    <strong>Beyond DX Perspectives (Video)</strong>
+                    <strong>Beyond DX Perspectives </strong>
                     <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
                       GPPB-TSO: What to Buy, Build, and Share · DOST-ASTI: From
                       Pilots to Scale
@@ -1168,11 +1189,24 @@
                   </td>
                   <td class="px-4 py-3 sm:px-6 sm:py-4">
                     <strong
-                      >AI in Action: Private-Sector Solutions for Public
-                      Value</strong
+                      >AI in Action: Live Demo of Private-Sector Solutions for Public Value</strong
                     >
                     <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
-                      Hiraia.org: Hiraia · DARC Labs: A-Eye · Packworks: Sari IQ
+                      Stay tuned for the full roster of solutions!
+                    </p>
+                  </td>
+                  <tr>
+                  <td
+                    class="whitespace-nowrap px-4 py-3 align-top text-[#8f94c2] sm:px-6 sm:py-4"
+                  >
+                    11:05 – 11:10 AM
+                  </td>
+                  <td class="px-4 py-3 sm:px-6 sm:py-4">
+                    <strong
+                      >Ask the Implementers</strong
+                    >
+                    <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
+                      Audience pulse and live questions to the teams behind the solutions.
                     </p>
                   </td>
                 </tr>
@@ -1195,7 +1229,7 @@
                     11:10 – 11:15 AM
                   </td>
                   <td class="px-4 py-3 sm:px-6 sm:py-4">
-                    <strong>Beyond DX Perspectives (Video)</strong>
+                    <strong>Beyond DX Perspectives </strong>
                     <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
                       DAP: Equipping Government for AI
                     </p>
@@ -1208,10 +1242,60 @@
                     11:15 – 11:45 AM
                   </td>
                   <td class="px-4 py-3 sm:px-6 sm:py-4">
-                    <strong>AI in Action: DAP Innovations</strong>
+                    <strong>AI in Action: Live Demo of DAP Innovations</strong>
                     <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
                       CSF: TrendsWatch 2.0 · Services Group: Project ORACLE ·
                       CCD: TUKLAS
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="whitespace-nowrap px-4 py-3 align-top text-[#8f94c2] sm:px-6 sm:py-4"
+                  >
+                    11:50 – 11:55 AM
+                  </td>
+                  <td class="px-4 py-3 sm:px-6 sm:py-4">
+                    <strong>Ask the Implementers</strong>
+                    <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
+                     Audience pulse and live questions to the teams behind the solutions.
+                    </p>
+                  </td>
+                </tr>
+                <tr class="bg-[#2c305c]">
+                  <td colspan="2" class="px-4 py-3 sm:px-6 sm:py-4">
+                    <strong class="uppercase tracking-wide"
+                      >Closing Plenary: From Insight to Action</strong
+                    >
+                    <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
+                      Discover approaches to capacity building and long-term
+                      organizational transformation.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="whitespace-nowrap px-4 py-3 align-top text-[#8f94c2] sm:px-6 sm:py-4"
+                  >
+                    11:55 AM – 12:00 PM
+                  </td>
+                  <td class="px-4 py-3 sm:px-6 sm:py-4">
+                    <strong>Connecting the Dots: From Insight to Action</strong>
+                    <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
+                     Synthesis of the key messages and insights from the three sets
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td
+                    class="whitespace-nowrap px-4 py-3 align-top text-[#8f94c2] sm:px-6 sm:py-4"
+                  >
+                    12:00 – 12:05 PM
+                  </td>
+                  <td class="px-4 py-3 sm:px-6 sm:py-4">
+                    <strong>From Pulse to Insight</strong>
+                    <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
+                     Presentation of the audience-pulse results
                     </p>
                   </td>
                 </tr>
@@ -1224,7 +1308,7 @@
                   <td class="px-4 py-3 sm:px-6 sm:py-4">
                     <strong>Closing Message</strong>
                     <p class="mt-1 text-[10px] text-[#8f94c2] sm:text-xs">
-                      Magdalena L. Mendoza<br />Executive Vice President
+                      Magdalena L. Mendoza<br />Executive Vice President, <br/>Development Academy of the Philippines
                     </p>
                   </td>
                 </tr>
@@ -1235,7 +1319,7 @@
                     12:10 – 1:30 PM
                   </td>
                   <td class="px-4 py-3 sm:px-6 sm:py-4">
-                    <strong>Lunch and Networking</strong>
+                    <strong>Lunch, AI Showcase, and Networking</strong>
                   </td>
                 </tr>
               </tbody>
@@ -1561,7 +1645,7 @@
             <h2
               class="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl"
             >
-              Who should attend
+              Who are Invited
             </h2>
             <p
               class="mx-auto mt-2 max-w-3xl text-xs leading-relaxed text-[#a1a5d2] sm:mt-3 sm:text-sm lg:text-base"
@@ -1663,7 +1747,7 @@
               </svg>
               <span
                 class="text-xs font-semibold leading-snug sm:text-sm lg:text-base"
-                >Participants and partners of the AI CapB</span
+                >Innovation Groups</span
               >
             </div>
 
@@ -2202,6 +2286,25 @@
           drag = null;
         }),
       );
+
+      
     </script>
+
+    <script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
+    });
+  }
+</script>
   </body>
 </html>
