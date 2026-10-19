@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beyond DX - On-Site Check-In</title>
+  <title>Beyond DX - On-Site QR Scanner</title>
+  <!-- Load HTML5 QR Code Scanner Library -->
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #0a0d2e;
       color: #ffffff;
       display: flex;
@@ -15,65 +21,154 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      margin: 0;
-      padding: 16px;
-      box-sizing: border-box;
+      padding: 20px;
     }
-    h1 { color: #38bdf8; margin-bottom: 8px; text-align: center; }
-    p { color: #a1a5d2; margin-top: 0; margin-bottom: 24px; text-align: center; }
+    h1 {
+      color: #38bdf8;
+      margin-bottom: 8px;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    p.subtitle {
+      color: #a1a5d2;
+      margin-bottom: 24px;
+      text-align: center;
+      font-size: 1rem;
+    }
     #reader {
       width: 100%;
       max-width: 480px;
       background-color: #131538;
       border: 2px solid #282b68;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
     }
-    #result-box {
-      margin-top: 24px;
-      padding: 20px;
-      border-radius: 10px;
-      background-color: #131538;
-      border: 1px solid #38bdf8;
-      max-width: 480px;
-      width: 100%;
-      box-sizing: border-box;
+
+    /* AUTOMATIC WELCOME POPUP OVERLAY */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(10, 13, 46, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .popup-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .popup-card {
+      background: linear-gradient(135deg, #131538 0%, #1a1c4b 100%);
+      border: 2px solid #38bdf8;
+      border-radius: 20px;
+      padding: 36px 28px;
+      width: 90%;
+      max-width: 460px;
       text-align: center;
-      display: none;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.2);
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
     }
-    .attendee-name { font-size: 1.4rem; font-weight: bold; color: #4ade80; margin-bottom: 4px; }
-    .attendee-agency { font-size: 1rem; color: #cbd5e1; }
-    .checkin-status { font-size: 0.85rem; color: #38bdf8; margin-top: 8px; }
+
+    .popup-overlay.active .popup-card {
+      transform: scale(1);
+    }
+
+    .icon-badge {
+      width: 64px;
+      height: 64px;
+      background-color: rgba(74, 222, 128, 0.15);
+      border: 2px solid #4ade80;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+      color: #4ade80;
+      font-size: 1.8rem;
+    }
+
+    .popup-title {
+      color: #38bdf8;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .attendee-name {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .attendee-agency {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+
+    .status-text {
+      font-size: 0.85rem;
+      color: #4ade80;
+      background-color: rgba(74, 222, 128, 0.1);
+      padding: 8px 16px;
+      border-radius: 20px;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Beyond DX Check-In Scanner</h1>
-  <p>Scan attendee entry pass QR code</p>
+  <h1>Beyond DX Check-In Pass Scanner</h1>
+  <p class="subtitle">Point tablet camera at the attendee's email QR pass</p>
 
+  <!-- Camera Container -->
   <div id="reader"></div>
 
-  <div id="result-box">
-    <div id="attendee-name" class="attendee-name"></div>
-    <div id="attendee-agency" class="attendee-agency"></div>
-    <div id="checkin-status" class="checkin-status">Logging to sheet...</div>
+  <!-- AUTOMATIC POPUP MODAL -->
+  <div id="welcome-popup" class="popup-overlay">
+    <div class="popup-card">
+      <div class="icon-badge">✓</div>
+      <div class="popup-title">Welcome to Beyond DX</div>
+      <div id="popup-name" class="attendee-name">Attendee Name</div>
+      <div id="popup-agency" class="attendee-agency">Agency / Organization</div>
+      <div id="popup-status" class="status-text">✓ Attendance Recorded</div>
+    </div>
   </div>
 
   <script>
-    // REPLACE WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
-    const SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_DEPLOYMENT_ID/exec";
+    // PASTE YOUR COPIED GOOGLE APPS SCRIPT WEB APP URL HERE
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxtfcAO7dOTzgxi-deXwLZ5CbijyCLUqJz14DOFLLu5W-h0IwfHG1AwU78E1fJVK_GU/exec";
     let isProcessing = false;
 
+    // Automatic Voice Welcome Function
     function speakWelcome(name) {
       if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const message = new SpeechSynthesisUtterance("Welcome to Beyond DX, " + name + "!");
-        message.rate = 0.95;
-        message.lang = 'en-US';
-        window.speechSynthesis.speak(message);
+        window.speechSynthesis.cancel(); // Reset active audio queues
+        const speechText = "Welcome to Beyond DX, " + name + "!";
+        const utterance = new SpeechSynthesisUtterance(speechText);
+        utterance.rate = 0.95; // Natural speaking pace
+        utterance.pitch = 1.0;
+        utterance.lang = 'en-US';
+        window.speechSynthesis.speak(utterance);
       }
     }
 
+    // Parse Scanned QR String
     function parseQRData(qrText) {
       let name = "Attendee";
       let agency = "";
@@ -90,6 +185,7 @@
       return { name, agency, email };
     }
 
+    // Log Scan to Attendance Google Sheet
     function recordCheckInInSheet(parsedData) {
       fetch(SCRIPT_URL, {
         method: "POST",
@@ -101,41 +197,45 @@
           agency: parsedData.agency,
           email: parsedData.email
         })
-      })
-      .then(() => {
-        document.getElementById('checkin-status').innerText = "✓ Check-in time recorded in Google Sheet!";
-      })
-      .catch(() => {
-        document.getElementById('checkin-status').innerText = "✓ Checked in locally";
       });
     }
 
+    // Triggered when camera reads QR pass
     function onScanSuccess(decodedText) {
       if (isProcessing) return;
       isProcessing = true;
 
       const data = parseQRData(decodedText);
 
-      document.getElementById('attendee-name').innerText = "Welcome, " + data.name + "!";
-      document.getElementById('attendee-agency').innerText = data.agency ? "Agency: " + data.agency : "";
-      document.getElementById('checkin-status').innerText = "Logging to sheet...";
-      document.getElementById('result-box').style.display = 'block';
+      // 1. Populate Popup Details
+      document.getElementById('popup-name').innerText = data.name;
+      document.getElementById('popup-agency').innerText = data.agency ? data.agency : "";
+      
+      // 2. Show Animated Popup Overlay
+      const popup = document.getElementById('welcome-popup');
+      popup.classList.add('active');
 
-      // 1. Play natural voice welcome
+      // 3. Trigger Voice Greeting
       speakWelcome(data.name);
 
-      // 2. Post check-in timestamp directly to Google Sheets Column F
+      // 4. Log to Attendance Google Sheet
       recordCheckInInSheet(data);
 
+      // 5. Automatically dismiss popup after 4 seconds and ready scanner for next person
       setTimeout(() => {
-        document.getElementById('result-box').style.display = 'none';
+        popup.classList.remove('active');
         isProcessing = false;
-      }, 4500);
+      }, 4000);
     }
 
+    // Initialize Camera Scanner
     const html5QrcodeScanner = new Html5QrcodeScanner(
       "reader",
-      { fps: 10, qrbox: { width: 250, height: 250 }, facingMode: "environment" },
+      { 
+        fps: 10, 
+        qrbox: { width: 250, height: 250 }, 
+        facingMode: "environment" 
+      },
       false
     );
 
