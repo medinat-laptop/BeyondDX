@@ -326,8 +326,7 @@
     function triggerBadgePrint() {
       document.getElementById('receipt-name').innerText = currentAttendee.name ? currentAttendee.name : "Attendee";
       document.getElementById('receipt-agency').innerText = currentAttendee.agency ? currentAttendee.agency : "N/A";
-      document.getElementById('receipt-time').innerText = "Time-In: " + new Date().toLocaleTimeString();
-
+     
       // Trigger standard browser print dialog
       window.print();
 
