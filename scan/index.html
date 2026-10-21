@@ -171,37 +171,45 @@
       display: none;
     }
 
-/* PRINT OVERRIDE FOR 50mm x 80mm THERMAL LABELS */
-@media print {
-  @page {
-    size: 50mm 80mm;
-    margin: 0;
-  }
+    /* PRINT OVERRIDE FOR 80mm x 50mm THERMAL LABELS */
+    @media print {
+      @page {
+        size: 80mm 50mm landscape;
+        margin: 0;
+      }
 
-  body * {
-    visibility: hidden !important;
-  }
+      html, body {
+        width: 80mm;
+        height: 50mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+      }
 
-  #printable-receipt, 
-  #printable-receipt * {
-    visibility: visible !important;
-  }
+      body * {
+        visibility: hidden !important;
+      }
 
-  #printable-receipt {
-    display: block !important;
-    position: fixed !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 50mm !important;
-    height: 80mm !important;
-    color: #000000 !important;
-    background: #ffffff !important;
-    font-family: 'Arial', sans-serif !important;
-    padding: 3mm !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
-  }
-}
+      #printable-receipt, 
+      #printable-receipt * {
+        visibility: visible !important;
+      }
+
+      #printable-receipt {
+        display: block !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 80mm !important;
+        height: 50mm !important;
+        color: #000000 !important;
+        background: #ffffff !important;
+        font-family: 'Arial', sans-serif !important;
+        padding: 4mm !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -229,22 +237,22 @@
     </div>
   </div>
 
-<!-- HIDDEN GOOJPRT THERMAL PRINTABLE RECEIPT TEMPLATE (50mm x 80mm) -->
-<div id="printable-receipt">
-  <div style="text-align: center; line-height: 1.25;">
-    <p style="font-weight: 900; font-size: 14px; margin-bottom: 2px; letter-spacing: 0.5px;">BEYOND DX 2026</p>
-    <p style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #111;">AI Transformation Forum</p>
-    <p style="border-top: 1px dashed #000; margin: 4px 0;"></p>
-    <p style="font-size: 9px; font-weight: bold; text-transform: uppercase; margin: 3px 0;">OFFICIAL ATTENDEE PASS</p>
-    
-    <p id="receipt-name" style="font-size: 15px; font-weight: 900; margin: 8px 0; word-wrap: break-word; line-height: 1.15;"></p>
-    <p id="receipt-agency" style="font-size: 11px; font-weight: 600; margin-bottom: 6px; word-wrap: break-word;"></p>
-    
-    <p style="border-top: 1px dashed #000; margin: 4px 0;"></p>
-    <p id="receipt-time" style="font-size: 9px; font-weight: bold; margin: 3px 0;"></p>
-    <p style="font-size: 8px; font-weight: 600; margin-top: 6px;">DAP - Center for Strategic Futures</p>
+  <!-- HIDDEN GOOJPRT THERMAL PRINTABLE RECEIPT TEMPLATE (80mm x 50mm) -->
+  <div id="printable-receipt">
+    <div style="text-align: center; line-height: 1.2;">
+      <p style="font-weight: 900; font-size: 16px; margin-bottom: 2px;">BEYOND DX 2026</p>
+      <p style="font-size: 11px; font-weight: bold; margin-bottom: 4px; color: #222;">AI Transformation Forum</p>
+      <p style="border-top: 1px dashed #000; margin: 4px 0;"></p>
+      <p style="font-size: 9px; font-weight: bold; text-transform: uppercase; margin: 2px 0;">OFFICIAL ATTENDEE PASS</p>
+      
+      <p id="receipt-name" style="font-size: 16px; font-weight: 900; margin: 6px 0; word-wrap: break-word; line-height: 1.1;"></p>
+      <p id="receipt-agency" style="font-size: 11px; font-weight: 600; margin-bottom: 4px; word-wrap: break-word;"></p>
+      
+      <p style="border-top: 1px dashed #000; margin: 4px 0;"></p>
+      <p id="receipt-time" style="font-size: 9px; font-weight: bold; margin: 2px 0;"></p>
+      <p style="font-size: 8px; font-weight: 600; margin-top: 4px;">DAP - Center for Strategic Futures</p>
+    </div>
   </div>
-</div>
 
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbysxtbyrgjntjmyG_T042Ts5DHb8Qfbpa2liTBVt8hMBmSjzeRb1JXWZWEigx1FZkTA/exec";
@@ -285,7 +293,7 @@
       return { name, agency, email };
     }
 
-    // RELIABLE GOOGLE SHEETS RECORDING (CROSS-DEVICE FIX)
+    // RELIABLE GOOGLE SHEETS RECORDING
     function recordCheckInInSheet(parsedData) {
       const payload = JSON.stringify({
         action: "checkIn",
@@ -294,7 +302,6 @@
         email: parsedData.email
       });
 
-      // Bypasses iOS Safari CORS restrictions and UI freezes
       if (navigator.sendBeacon) {
         const blob = new Blob([payload], { type: 'text/plain;charset=UTF-8' });
         if (navigator.sendBeacon(SCRIPT_URL, blob)) return;
@@ -309,21 +316,25 @@
       }).catch(err => console.error("Sheet Logging Error:", err));
     }
 
-    // STANDARD BROWSER PRINT FUNCTION
-    function triggerBadgePrint() {
-      document.getElementById('receipt-name').innerText = currentAttendee.name ? currentAttendee.name : "Attendee";
-      document.getElementById('receipt-agency').innerText = currentAttendee.agency ? currentAttendee.agency : "N/A";
-      document.getElementById('receipt-time').innerText = "Time-In: " + new Date().toLocaleTimeString();
-
-      window.print();
-    }
-
     // Manual or Automatic Close Popup Function
     function closeWelcomePopup() {
       if (autoCloseTimer) clearTimeout(autoCloseTimer);
       const popup = document.getElementById('welcome-popup');
       popup.classList.remove('active');
       isProcessing = false;
+    }
+
+    // PRINT FUNCTION WITH IMMEDIATE AUTO-CLOSE
+    function triggerBadgePrint() {
+      document.getElementById('receipt-name').innerText = currentAttendee.name ? currentAttendee.name : "Attendee";
+      document.getElementById('receipt-agency').innerText = currentAttendee.agency ? currentAttendee.agency : "N/A";
+      document.getElementById('receipt-time').innerText = "Time-In: " + new Date().toLocaleTimeString();
+
+      // Trigger standard browser print dialog
+      window.print();
+
+      // Immediately dismiss popup and ready scanner for next pass
+      closeWelcomePopup();
     }
 
     // Triggered when camera reads QR pass
@@ -348,13 +359,13 @@
       // 4. Trigger Voice Greeting
       speakWelcome(data.name);
 
-      // 5. Automatically close popup after 5 seconds if not manually dismissed
+      // 5. Fallback auto-close after 20 seconds if print button is not clicked
       autoCloseTimer = setTimeout(() => {
         closeWelcomePopup();
-      }, 5000);
+      }, 20000);
     }
 
-    // CAMERA INITIALIZATION (COMPATIBLE WITH LAPTOP WEBCAMS & MOBILE CAMERAS)
+    // CAMERA INITIALIZATION
     Html5Qrcode.getCameras().then(devices => {
       if (devices && devices.length > 0) {
         const cameraId = devices.length > 1 ? devices[1].id : devices[0].id;
