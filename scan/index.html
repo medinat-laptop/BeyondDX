@@ -243,7 +243,7 @@
   </div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxtfcAO7dOTzgxi-deXwLZ5CbijyCLUqJz14DOFLLu5W-h0IwfHG1AwU78E1fJVK_GU/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbysxtbyrgjntjmyG_T042Ts5DHb8Qfbpa2liTBVt8hMBmSjzeRb1JXWZWEigx1FZkTA/exec";
     let isProcessing = false;
     let autoCloseTimer = null;
     let currentAttendee = { name: "", agency: "" };
@@ -281,19 +281,28 @@
       return { name, agency, email };
     }
 
-    // ORIGINAL WORKING LOGIC FOR GOOGLE SHEETS
+    // RELIABLE GOOGLE SHEETS RECORDING (CROSS-DEVICE FIX)
     function recordCheckInInSheet(parsedData) {
+      const payload = JSON.stringify({
+        action: "checkIn",
+        name: parsedData.name,
+        agency: parsedData.agency,
+        email: parsedData.email
+      });
+
+      // Bypasses iOS Safari CORS restrictions and UI freezes
+      if (navigator.sendBeacon) {
+        const blob = new Blob([payload], { type: 'text/plain;charset=UTF-8' });
+        if (navigator.sendBeacon(SCRIPT_URL, blob)) return;
+      }
+
       fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          action: "checkIn",
-          name: parsedData.name,
-          agency: parsedData.agency,
-          email: parsedData.email
-        })
-      });
+        headers: { "Content-Type": "text/plain" },
+        body: payload,
+        keepalive: true
+      }).catch(err => console.error("Sheet Logging Error:", err));
     }
 
     // STANDARD BROWSER PRINT FUNCTION
@@ -321,19 +330,19 @@
       const data = parseQRData(decodedText);
       currentAttendee = data;
 
-      // 1. Populate Popup Details
+      // 1. Immediately post data to Google Sheets
+      recordCheckInInSheet(data);
+
+      // 2. Populate Popup Details
       document.getElementById('popup-name').innerText = data.name;
       document.getElementById('popup-agency').innerText = data.agency ? data.agency : "";
       
-      // 2. Show Animated Popup Overlay
+      // 3. Show Animated Popup Overlay
       const popup = document.getElementById('welcome-popup');
       popup.classList.add('active');
 
-      // 3. Trigger Voice Greeting
+      // 4. Trigger Voice Greeting
       speakWelcome(data.name);
-
-      // 4. Log to Attendance Google Sheet
-      recordCheckInInSheet(data);
 
       // 5. Automatically close popup after 5 seconds if not manually dismissed
       autoCloseTimer = setTimeout(() => {
