@@ -171,7 +171,7 @@
       display: none;
     }
 
-    /* PRINT OVERRIDE FOR THERMAL PRINTER (100mm x 150mm) */
+    /* PRINT OVERRIDE FOR THERMAL PRINTER (100mm x 150mm) WITH LARGER TEXT */
     @media print {
       @page {
         size: 100mm 150mm;
@@ -195,8 +195,8 @@
         width: 100mm !important;
         color: #000000 !important;
         background: #ffffff !important;
-        font-family: 'Courier New', Courier, monospace !important;
-        padding: 8mm !important;
+        font-family: 'Arial', sans-serif !important;
+        padding: 10mm !important;
         box-sizing: border-box !important;
       }
     }
@@ -227,23 +227,23 @@
     </div>
   </div>
 
-  <!-- HIDDEN GOOJPRT THERMAL PRINTABLE RECEIPT TEMPLATE -->
+  <!-- HIDDEN GOOJPRT THERMAL PRINTABLE RECEIPT TEMPLATE (LARGER TEXT) -->
   <div id="printable-receipt">
-    <div style="text-align: center; font-size: 12px; line-height: 1.3;">
-      <p style="font-weight: bold; font-size: 16px; margin-bottom: 2px;">BEYOND DX 2026</p>
-      <p style="font-size: 11px; margin-bottom: 6px;">AI Transformation Forum</p>
-      <p style="border-top: 1px dashed #000; margin: 6px 0;"></p>
-      <p style="font-size: 10px; text-transform: uppercase; margin: 4px 0;">OFFICIAL ATTENDEE PASS</p>
-      <p id="receipt-name" style="font-size: 18px; font-weight: bold; margin: 10px 0; word-wrap: break-word;"></p>
-      <p id="receipt-agency" style="font-size: 12px; margin-bottom: 8px;"></p>
-      <p style="border-top: 1px dashed #000; margin: 6px 0;"></p>
-      <p id="receipt-time" style="font-size: 10px; margin: 4px 0;"></p>
-      <p style="font-size: 9px; margin-top: 8px;">DAP - Center for Strategic Futures</p>
+    <div style="text-align: center; line-height: 1.4;">
+      <p style="font-weight: 900; font-size: 24px; margin-bottom: 4px; letter-spacing: 1px;">BEYOND DX 2026</p>
+      <p style="font-size: 16px; font-weight: bold; margin-bottom: 10px; color: #333;">AI Transformation Forum</p>
+      <p style="border-top: 2px dashed #000; margin: 10px 0;"></p>
+      <p style="font-size: 14px; font-weight: bold; text-transform: uppercase; margin: 8px 0; letter-spacing: 0.5px;">OFFICIAL ATTENDEE PASS</p>
+      <p id="receipt-name" style="font-size: 26px; font-weight: 900; margin: 16px 0; word-wrap: break-word; line-height: 1.2;"></p>
+      <p id="receipt-agency" style="font-size: 18px; font-weight: 600; margin-bottom: 12px;"></p>
+      <p style="border-top: 2px dashed #000; margin: 10px 0;"></p>
+      <p id="receipt-time" style="font-size: 14px; font-weight: bold; margin: 8px 0;"></p>
+      <p style="font-size: 12px; font-weight: 600; margin-top: 14px;">DAP - Center for Strategic Futures</p>
     </div>
   </div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbysxtbyrgjntjmyG_T042Ts5DHb8Qfbpa2liTBVt8hMBmSjzeRb1JXWZWEigx1FZkTA/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxtfcAO7dOTzgxi-deXwLZ5CbijyCLUqJz14DOFLLu5W-h0IwfHG1AwU78E1fJVK_GU/exec";
     let isProcessing = false;
     let autoCloseTimer = null;
     let currentAttendee = { name: "", agency: "" };
