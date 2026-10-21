@@ -281,19 +281,21 @@
       return { name, agency, email };
     }
 
-    // Log Scan to Attendance Google Sheet
+    // Log Scan to Attendance Google Sheet (With iPad Safari CORS Preflight Fix)
     function recordCheckInInSheet(parsedData) {
+      const payload = JSON.stringify({
+        action: "checkIn",
+        name: parsedData.name,
+        agency: parsedData.agency,
+        email: parsedData.email
+      });
+
       fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          action: "checkIn",
-          name: parsedData.name,
-          agency: parsedData.agency,
-          email: parsedData.email
-        })
-      });
+        headers: { "Content-Type": "text/plain" }, // Avoids iPad Safari preflight CORS blocking
+        body: payload
+      }).catch(err => console.error("Sheet Logging Error:", err));
     }
 
     // Print Badge Function with ZLabel Share Sheet & Standard Browser Print Support
