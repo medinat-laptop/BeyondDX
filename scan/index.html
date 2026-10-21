@@ -204,7 +204,7 @@
 <body>
 
   <h1>Beyond DX Check-In Pass Scanner</h1>
-  <p class="subtitle">Point camera at the attendee's email QR pass</p>
+  <p class="subtitle">Point tablet camera at the attendee's email QR pass</p>
 
   <!-- Camera Container -->
   <div id="reader"></div>
@@ -341,30 +341,18 @@
       }, 6000);
     }
 
-    // CAMERA INITIALIZATION WITH LAPTOP + TABLET FALLBACK SUPPORT
-    Html5Qrcode.getCameras().then(devices => {
-      if (devices && devices.length > 0) {
-        // Automatically picks rear camera on mobile/tablet, fallback to webcam on laptops
-        const cameraId = devices.length > 1 ? devices[1].id : devices[0].id;
-        
-        const html5QrCode = new Html5Qrcode("reader");
-        html5QrCode.start(
-          cameraId,
-          { 
-            fps: 10, 
-            qrbox: { width: 250, height: 250 } 
-          },
-          onScanSuccess
-        );
-      } else {
-        alert("No camera detected on this device.");
-      }
-    }).catch(err => {
-      console.error("Camera access error:", err);
-      // Fallback renderer if camera permission prompt delay occurs
-      const fallbackScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
-      fallbackScanner.render(onScanSuccess);
-    });
+    // Initialize Camera Scanner
+    const html5QrcodeScanner = new Html5QrcodeScanner(
+      "reader",
+      { 
+        fps: 10, 
+        qrbox: { width: 250, height: 250 }, 
+        facingMode: "environment" 
+      },
+      false
+    );
+
+    html5QrcodeScanner.render(onScanSuccess);
   </script>
 </body>
 </html>
