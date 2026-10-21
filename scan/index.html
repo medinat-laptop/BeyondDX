@@ -296,14 +296,32 @@
       });
     }
 
-    // Print Badge Function for GOOJPRT Printer
-    function triggerBadgePrint() {
-      // Force DOM update before opening print window
-      document.getElementById('receipt-name').innerText = currentAttendee.name ? currentAttendee.name : "Attendee";
-      document.getElementById('receipt-agency').innerText = currentAttendee.agency ? currentAttendee.agency : "N/A";
-      document.getElementById('receipt-time').innerText = "Time-In: " + new Date().toLocaleTimeString();
+    // Print Badge Function with ZLabel Share Sheet & Standard Browser Print Support
+    async function triggerBadgePrint() {
+      const name = currentAttendee.name ? currentAttendee.name : "Attendee";
+      const agency = currentAttendee.agency ? currentAttendee.agency : "N/A";
+      const timeIn = "Time-In: " + new Date().toLocaleTimeString();
 
-      // Trigger Browser Print Dialogue
+      // Populate printable HTML template
+      document.getElementById('receipt-name').innerText = name;
+      document.getElementById('receipt-agency').innerText = agency;
+      document.getElementById('receipt-time').innerText = timeIn;
+
+      // Check if running on iOS/iPadOS with Web Share API
+      if (navigator.share && /iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        try {
+          const badgeText = `BEYOND DX 2026\nAI Transformation Forum\n------------------------\nOFFICIAL ATTENDEE PASS\nName: ${name}\nAgency: ${agency}\n${timeIn}\nDAP - Center for Strategic Futures`;
+          await navigator.share({
+            title: 'Beyond DX Attendee Badge',
+            text: badgeText
+          });
+          return;
+        } catch (err) {
+          console.log("Share sheet dismissed or unsupported, falling back to window.print()");
+        }
+      }
+
+      // Standard browser print fallback (for Laptops/PCs or standard AirPrint)
       window.print();
     }
 
