@@ -171,35 +171,37 @@
       display: none;
     }
 
-    /* PRINT OVERRIDE FOR THERMAL PRINTER (100mm x 150mm) WITH LARGER TEXT */
-    @media print {
-      @page {
-        size: 100mm 150mm;
-        margin: 0;
-      }
+/* PRINT OVERRIDE FOR 50mm x 80mm THERMAL LABELS */
+@media print {
+  @page {
+    size: 50mm 80mm;
+    margin: 0;
+  }
 
-      body * {
-        visibility: hidden !important;
-      }
+  body * {
+    visibility: hidden !important;
+  }
 
-      #printable-receipt, 
-      #printable-receipt * {
-        visibility: visible !important;
-      }
+  #printable-receipt, 
+  #printable-receipt * {
+    visibility: visible !important;
+  }
 
-      #printable-receipt {
-        display: block !important;
-        position: fixed !important;
-        left: 0 !important;
-        top: 0 !important;
-        width: 100mm !important;
-        color: #000000 !important;
-        background: #ffffff !important;
-        font-family: 'Arial', sans-serif !important;
-        padding: 10mm !important;
-        box-sizing: border-box !important;
-      }
-    }
+  #printable-receipt {
+    display: block !important;
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 50mm !important;
+    height: 80mm !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+    font-family: 'Arial', sans-serif !important;
+    padding: 3mm !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+}
   </style>
 </head>
 <body>
@@ -227,20 +229,22 @@
     </div>
   </div>
 
-  <!-- HIDDEN GOOJPRT THERMAL PRINTABLE RECEIPT TEMPLATE (LARGER TEXT) -->
-  <div id="printable-receipt">
-    <div style="text-align: center; line-height: 1.4;">
-      <p style="font-weight: 900; font-size: 24px; margin-bottom: 4px; letter-spacing: 1px;">BEYOND DX 2026</p>
-      <p style="font-size: 16px; font-weight: bold; margin-bottom: 10px; color: #333;">AI Transformation Forum</p>
-      <p style="border-top: 2px dashed #000; margin: 10px 0;"></p>
-      <p style="font-size: 14px; font-weight: bold; text-transform: uppercase; margin: 8px 0; letter-spacing: 0.5px;">OFFICIAL ATTENDEE PASS</p>
-      <p id="receipt-name" style="font-size: 26px; font-weight: 900; margin: 16px 0; word-wrap: break-word; line-height: 1.2;"></p>
-      <p id="receipt-agency" style="font-size: 18px; font-weight: 600; margin-bottom: 12px;"></p>
-      <p style="border-top: 2px dashed #000; margin: 10px 0;"></p>
-      <p id="receipt-time" style="font-size: 14px; font-weight: bold; margin: 8px 0;"></p>
-      <p style="font-size: 12px; font-weight: 600; margin-top: 14px;">DAP - Center for Strategic Futures</p>
-    </div>
+<!-- HIDDEN GOOJPRT THERMAL PRINTABLE RECEIPT TEMPLATE (50mm x 80mm) -->
+<div id="printable-receipt">
+  <div style="text-align: center; line-height: 1.25;">
+    <p style="font-weight: 900; font-size: 14px; margin-bottom: 2px; letter-spacing: 0.5px;">BEYOND DX 2026</p>
+    <p style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #111;">AI Transformation Forum</p>
+    <p style="border-top: 1px dashed #000; margin: 4px 0;"></p>
+    <p style="font-size: 9px; font-weight: bold; text-transform: uppercase; margin: 3px 0;">OFFICIAL ATTENDEE PASS</p>
+    
+    <p id="receipt-name" style="font-size: 15px; font-weight: 900; margin: 8px 0; word-wrap: break-word; line-height: 1.15;"></p>
+    <p id="receipt-agency" style="font-size: 11px; font-weight: 600; margin-bottom: 6px; word-wrap: break-word;"></p>
+    
+    <p style="border-top: 1px dashed #000; margin: 4px 0;"></p>
+    <p id="receipt-time" style="font-size: 9px; font-weight: bold; margin: 3px 0;"></p>
+    <p style="font-size: 8px; font-weight: 600; margin-top: 6px;">DAP - Center for Strategic Futures</p>
   </div>
+</div>
 
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbysxtbyrgjntjmyG_T042Ts5DHb8Qfbpa2liTBVt8hMBmSjzeRb1JXWZWEigx1FZkTA/exec";
